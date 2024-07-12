@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="绯鞠">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://loli.fj.cn/2023/06/24/flutter的scaffold脚手架组件/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="前言Flutter的Scaffold脚手架组件学习笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】Flutter的Scaffold脚手架组件">
+<meta property="og:url" content="https://loli.fj.cn/2023/06/24/Flutter%E7%9A%84Scaffold%E8%84%9A%E6%89%8B%E6%9E%B6%E7%BB%84%E4%BB%B6/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言Flutter的Scaffold脚手架组件学习笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-06-24T18:04:53.000Z">
+<meta property="article:modified_time" content="2024-07-12T10:53:28.759Z">
+<meta property="article:author" content="绯鞠">
+<meta property="article:tag" content="Dart">
+<meta property="article:tag" content="Flutter">
+<meta name="twitter:card" content="summary">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/dist/images/favicon_package/favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/favicon.ico">
+    <meta name="theme-color" content="#F6CDE1">
+    <link rel="shortcut icon" href="/dist/images/favicon_package/favicon.ico">
+    <!--- Page Info-->
+    
+    <title>
+        
+            【笔记】Flutter的Scaffold脚手架组件 -
+        
+        绯鞠的博客
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+        <link href="/dist/css/fonts.css" rel="stylesheet">
+    
+    
+        <link href="/dist/css/fonts.css" rel="stylesheet">
+    
+    
+    
+
+    
+        
+<script src="/js/libs/anime.min.js"></script>
+
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"loli.fj.cn","root":"/","language":"zh-CN","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":false,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":true,"family":"Consolas","url":"/dist/css/fonts.css"}},"toc":{"enable":true,"max_depth":6,"number":true,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#F6CDE1","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":false},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"绯鞠的博客","subtitle":{"text":[],"hitokoto":{"enable":true,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":true,"family":"DroidSansChinese","url":"/dist/css/fonts.css"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"mailto:00-isomer-cabbies@icloud.com","telegram":"https://t.me/LittleSweetCookie"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.4","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-home"},"About":{"path":"/about/","icon":"fa-regular fa-user"},"Tags":{"path":"/tags/","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories/","icon":"fa-regular fa-th"},"Archives":{"path":"/archives/","icon":"fa-regular fa-archive"},"更多":{"submenus":{"友链":"/links/","赞助":"/reward/","订阅":"/atom.xml","主题":"//cards.loli.fj.cn"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"YYYY-MM-DD","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2019/11/22 15:53:18"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+    <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        绯鞠的博客
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [40,0],
+                translateZ: 0,
+                opacity: [0,1],
+                filter: ['blur(5px)', 'blur(0px)'], // Starting from blurred to unblurred
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i,
+            }).add({
+                targets: '.ml13 .letter',
+                translateY: [0,-40],
+                opacity: [1,0],
+                filter: ['blur(0px)', 'blur(5px)'], // Ending from unblurred to blurred
+                easing: "easeInExpo",
+                duration: 1200,
+                delay: (el, i) => 100 + 30 * i,
+                complete: function() {
+                    hidePreloader(); // Call hidePreloader after the animation completes
+                }
+            });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/dist/images/avatar.gif">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                绯鞠的博客
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-home fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-regular fa-th fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives/"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    
+                                    更多
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/links/">
+                                                    友链
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/reward/">
+                                                    赞助
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/atom.xml">
+                                                    订阅
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="//cards.loli.fj.cn">
+                                                    主题
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-home fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-regular fa-th fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives/"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-更多"
+                        >
+                            <span>
+                                更多
+                            </span>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-更多">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/links/">友链</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/reward/">赞助</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/atom.xml">订阅</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="//cards.loli.fj.cn">主题</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">114</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2844</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">【笔记】Flutter的Scaffold脚手架组件</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/dist/images/avatar.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">绯鞠</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv10</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2023-06-24 18:04:53</span>
+        <span class="mobile">2023-06-24 18:04:53</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-07-12 10:53:28</span>
+            <span class="mobile">2024-07-12 10:53:28</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+        <span class="article-categories article-meta-item">
+            <i class="fa-regular fa-folders"></i>&nbsp;
+            <ul>
+                
+                
+                    
+                        
+                        <li>
+                            <a href="/categories/Flutter%E5%AD%A6%E4%B9%A0%E6%8C%87%E5%8C%97/">Flutter学习指北</a>&nbsp;
+                        </li>
+                    
+                    
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Dart/">Dart</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Flutter/">Flutter</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Flutter的Scaffold脚手架组件学习笔记</p>
+<span id="more"></span>
+
+<h2 id="Scaffold组件"><a href="#Scaffold组件" class="headerlink" title="Scaffold组件"></a>Scaffold组件</h2><blockquote>
+<p><code>appBar</code>：定义顶部导航栏<br><code>body</code>：定义页面主体</p>
+</blockquote>
+<div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(MaterialApp(</span><br><span class="line">    home: Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: Text(<span class="string">&quot;文本内容&quot;</span>),</span><br><span class="line">      ),</span><br><span class="line">      body: <span class="keyword">const</span> Center(</span><br><span class="line">        child: Text(</span><br><span class="line">          <span class="string">&quot;文本内容&quot;</span>,</span><br><span class="line">          textDirection: TextDirection.ltr,</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="BottomNavigationBar底部导航栏"><a href="#BottomNavigationBar底部导航栏" class="headerlink" title="BottomNavigationBar底部导航栏"></a>BottomNavigationBar底部导航栏</h2><div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><figcaption><span>lib/main.dart</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./pages/tabs.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(MaterialApp(</span><br><span class="line">    home: Scaffold(</span><br><span class="line">      appBar: AppBar(),</span><br><span class="line">      body: <span class="keyword">const</span> Tabs(),</span><br><span class="line">    ),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<blockquote>
+<p><code>iconSize</code>：图标大小<br><code>fixedColor</code>：选中的图标颜色<br><code>type: BottomNavigationBarType.fixed</code>：可以放大于3个按钮<br><code>bottomNavigationBar</code>：定义底部导航栏<br><code>currentIndex</code>：定义当前选中按钮的索引<br><code>onTap</code>：按钮被点击触发的事件<br><code>items</code>：所有按钮元素</p>
+</blockquote>
+<div class="highlight-container" data-rel="Plaintext"><figure class="iseeu highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">import &#x27;package:flutter/material.dart&#x27;;</span><br><span class="line">import &#x27;./tabs/page_one.dart&#x27;;</span><br><span class="line">import &#x27;./tabs/page_two.dart&#x27;;</span><br><span class="line"></span><br><span class="line">class Tabs extends StatefulWidget &#123;</span><br><span class="line">  const Tabs(&#123;super.key&#125;);</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  State&lt;Tabs&gt; createState() =&gt; _TabsState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class _TabsState extends State&lt;Tabs&gt; &#123;</span><br><span class="line"></span><br><span class="line">  int _currentIndex = 0;</span><br><span class="line">  final List&lt;Widget&gt; _pages = const [</span><br><span class="line">    PageOne(),</span><br><span class="line">    PageTwo(),</span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  @override</span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    return Scaffold(</span><br><span class="line">      body: _pages[_currentIndex],</span><br><span class="line">      bottomNavigationBar: BottomNavigationBar(</span><br><span class="line">        iconSize: 20,</span><br><span class="line">        fixedColor: Colors.red,</span><br><span class="line">        type: BottomNavigationBarType.fixed,</span><br><span class="line">        currentIndex: _currentIndex,</span><br><span class="line">        onTap: (index) &#123;</span><br><span class="line">          setState(() &#123;</span><br><span class="line">            _currentIndex = index;</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">        items: const [</span><br><span class="line">          BottomNavigationBarItem(</span><br><span class="line">            icon: Icon(Icons.home),</span><br><span class="line">            label: &quot;PageOne&quot;,</span><br><span class="line">          ),</span><br><span class="line">          BottomNavigationBarItem(</span><br><span class="line">            icon: Icon(Icons.home),</span><br><span class="line">            label: &quot;PageTwo&quot;,</span><br><span class="line">          ),</span><br><span class="line">        ],</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><figcaption><span>lib/pages/tabs/page_one.dart</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PageOne</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> PageOne(&#123;<span class="keyword">super</span>.key&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  State&lt;PageOne&gt; createState() =&gt; _PageOneState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_PageOneState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">PageOne</span>&gt; </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">const</span> Text(<span class="string">&quot;PageOne&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><figcaption><span>lib/pages/tabs/page_two.dart</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">PageTwo</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> PageTwo(&#123;<span class="keyword">super</span>.key&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  State&lt;PageTwo&gt; createState() =&gt; _PageTwoState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_PageTwoState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">PageTwo</span>&gt; </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">const</span> Text(<span class="string">&quot;PageTwo&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="实现中间凸起的底部导航栏"><a href="#实现中间凸起的底部导航栏" class="headerlink" title="实现中间凸起的底部导航栏"></a>实现中间凸起的底部导航栏</h3><blockquote>
+<p><code>color</code>：浮动按钮的底纹颜色<br><code>borderRadius</code>：浮动按钮的底纹圆角<br><code>backgroundColor</code>：浮动按钮的背景颜色<br><code>floatingActionButtonLocation</code>：浮动按钮的位置</p>
+<blockquote>
+<p><code>FloatingActionButtonLocation.centerDocked</code>：Dock中间<br><code>FloatingActionButtonLocation.centerFloat</code>：屏幕浮动中间<br><code>FloatingActionButtonLocation.centerTop</code>：屏幕顶部中间<br><code>FloatingActionButtonLocation.endDocked</code>：Dock右边<br><code>FloatingActionButtonLocation.endFloat</code>：屏幕浮动右边<br><code>FloatingActionButtonLocation.endTop</code>：屏幕顶部右边<br><code>FloatingActionButtonLocation.endContained</code>：屏幕底部右边<br><code>FloatingActionButtonLocation.startDocked</code>：Dock左边<br><code>FloatingActionButtonLocation.startFloat</code>：屏幕浮动左边<br><code>FloatingActionButtonLocation.startTop</code>：屏幕顶部左边</p>
+</blockquote>
+</blockquote>
+<div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><figcaption><span>lib/pages/tabs.dart</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./tabs/page_one.dart&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./tabs/page_two.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Tabs</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> Tabs(&#123;<span class="keyword">super</span>.key&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  State&lt;Tabs&gt; createState() =&gt; _TabsState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_TabsState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">Tabs</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="built_in">int</span> _currentIndex = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">final</span> <span class="built_in">List</span>&lt;Widget&gt; _pages = <span class="keyword">const</span> [</span><br><span class="line">    PageOne(),</span><br><span class="line">    PageTwo(),</span><br><span class="line">    PageOne(),</span><br><span class="line">    PageTwo(),</span><br><span class="line">    PageOne(),</span><br><span class="line">  ];</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      body: _pages[_currentIndex],</span><br><span class="line">      bottomNavigationBar: BottomNavigationBar(</span><br><span class="line">        type: BottomNavigationBarType.fixed,</span><br><span class="line">        currentIndex: _currentIndex,</span><br><span class="line">        onTap: (index) &#123;</span><br><span class="line">          setState(() &#123;</span><br><span class="line">            _currentIndex = index;</span><br><span class="line">          &#125;);</span><br><span class="line">        &#125;,</span><br><span class="line">        items: <span class="keyword">const</span> [</span><br><span class="line">          BottomNavigationBarItem(</span><br><span class="line">            icon: Icon(Icons.home),</span><br><span class="line">            label: <span class="string">&quot;PageOne&quot;</span>,</span><br><span class="line">          ),</span><br><span class="line">          BottomNavigationBarItem(</span><br><span class="line">            icon: Icon(Icons.home),</span><br><span class="line">            label: <span class="string">&quot;PageTwo&quot;</span>,</span><br><span class="line">          ),</span><br><span class="line">          BottomNavigationBarItem(</span><br><span class="line">            icon: Icon(Icons.home),</span><br><span class="line">            label: <span class="string">&quot;PageOne&quot;</span>,</span><br><span class="line">          ),</span><br><span class="line">          BottomNavigationBarItem(</span><br><span class="line">            icon: Icon(Icons.home),</span><br><span class="line">            label: <span class="string">&quot;PageTwo&quot;</span>,</span><br><span class="line">          ),</span><br><span class="line">          BottomNavigationBarItem(</span><br><span class="line">            icon: Icon(Icons.home),</span><br><span class="line">            label: <span class="string">&quot;PageOne&quot;</span>,</span><br><span class="line">          ),</span><br><span class="line">        ],</span><br><span class="line">      ),</span><br><span class="line">      floatingActionButton: Container(</span><br><span class="line">        width: <span class="number">60</span>,</span><br><span class="line">        height: <span class="number">60</span>,</span><br><span class="line">        padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">5</span>),</span><br><span class="line">        decoration: BoxDecoration(</span><br><span class="line">          color: Colors.white,</span><br><span class="line">          borderRadius: BorderRadius.circular(<span class="number">30</span>),</span><br><span class="line">        ),</span><br><span class="line">        child: FloatingActionButton(</span><br><span class="line">          backgroundColor: _currentIndex==<span class="number">2</span>?Colors.blue:Colors.black,</span><br><span class="line">          child: <span class="keyword">const</span> Icon(Icons.add),</span><br><span class="line">          onPressed: () &#123;</span><br><span class="line">            setState(() &#123;</span><br><span class="line">              _currentIndex = <span class="number">2</span>;</span><br><span class="line">            &#125;);</span><br><span class="line">          &#125;,</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="侧边栏"><a href="#侧边栏" class="headerlink" title="侧边栏"></a>侧边栏</h2><ul>
+<li>侧边栏既可以通过点击菜单按钮展现，也可以通过从屏幕边缘向屏幕中间滑动展现</li>
+</ul>
+<blockquote>
+<p><code>drawer</code>：定义左侧侧边栏<br><code>endDrawer</code>：定义右侧侧边栏</p>
+</blockquote>
+<div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(MaterialApp(</span><br><span class="line">    home: Scaffold(</span><br><span class="line">      appBar: AppBar(),</span><br><span class="line">      drawer: <span class="keyword">const</span> Drawer(</span><br><span class="line">        child: Text(<span class="string">&quot;左侧侧边栏&quot;</span>),</span><br><span class="line">      ),</span><br><span class="line">      endDrawer: <span class="keyword">const</span> Drawer(</span><br><span class="line">        child: Text(<span class="string">&quot;右侧侧边栏&quot;</span>),</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="菜单栏头部"><a href="#菜单栏头部" class="headerlink" title="菜单栏头部"></a>菜单栏头部</h3><div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(MaterialApp(</span><br><span class="line">    home: Scaffold(</span><br><span class="line">      appBar: AppBar(),</span><br><span class="line">      drawer: <span class="keyword">const</span> Drawer(</span><br><span class="line">        child: Column(</span><br><span class="line">          children: [</span><br><span class="line">            DrawerHeader(child: Text(<span class="string">&quot;左侧侧边栏&quot;</span>))</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="头部背景图占满侧边栏"><a href="#头部背景图占满侧边栏" class="headerlink" title="头部背景图占满侧边栏"></a>头部背景图占满侧边栏</h4><h5 id="通过Drawer实现"><a href="#通过Drawer实现" class="headerlink" title="通过Drawer实现"></a>通过Drawer实现</h5><blockquote>
+<p><code>&lt;url&gt;</code>：图片URL</p>
+</blockquote>
+<div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(MaterialApp(</span><br><span class="line">    home: Scaffold(</span><br><span class="line">      appBar: AppBar(),</span><br><span class="line">      drawer: <span class="keyword">const</span> Drawer(</span><br><span class="line">        child: Column(</span><br><span class="line">          children: [</span><br><span class="line">            Row(</span><br><span class="line">              children: [</span><br><span class="line">                Expanded(</span><br><span class="line">                  flex: <span class="number">1</span>,</span><br><span class="line">                  child: DrawerHeader(</span><br><span class="line">                    decoration: BoxDecoration(</span><br><span class="line">                      image: DecorationImage(</span><br><span class="line">                          image: NetworkImage(<span class="string">&quot;&lt;url&gt;&quot;</span>),</span><br><span class="line">                          fit: BoxFit.cover,</span><br><span class="line">                      )</span><br><span class="line">                    ),</span><br><span class="line">                    child: Text(<span class="string">&quot;左侧侧边栏&quot;</span>)</span><br><span class="line">                  ),</span><br><span class="line">                )</span><br><span class="line">              ],</span><br><span class="line">            )</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="通过UserAccountsDrawerHeader实现"><a href="#通过UserAccountsDrawerHeader实现" class="headerlink" title="通过UserAccountsDrawerHeader实现"></a>通过UserAccountsDrawerHeader实现</h5><blockquote>
+<p><code>accountName</code>：定义用户名<br><code>accountEmail</code>：定义用户邮箱<br><code>decoration</code>：定义背景图<br><code>currentAccountPicture</code>：定义用户当前头像<br><code>otherAccountsPictures</code>：定义用户其他头像</p>
+</blockquote>
+<div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(MaterialApp(</span><br><span class="line">    home: Scaffold(</span><br><span class="line">      appBar: AppBar(),</span><br><span class="line">      drawer: <span class="keyword">const</span> Drawer(</span><br><span class="line">        child: Column(</span><br><span class="line">          children: [</span><br><span class="line">            Row(</span><br><span class="line">              children: [</span><br><span class="line">                Expanded(</span><br><span class="line">                  flex: <span class="number">1</span>,</span><br><span class="line">                  child: UserAccountsDrawerHeader(</span><br><span class="line">                    accountName: Text(<span class="string">&quot;用户名&quot;</span>),</span><br><span class="line">                    accountEmail: Text(<span class="string">&quot;邮箱&quot;</span>),</span><br><span class="line">                    decoration: BoxDecoration(</span><br><span class="line">                      image: DecorationImage(</span><br><span class="line">                        fit: BoxFit.cover,</span><br><span class="line">                        image: NetworkImage(<span class="string">&quot;&lt;url&gt;&quot;</span>)</span><br><span class="line">                      ),</span><br><span class="line">                    ),</span><br><span class="line">                    currentAccountPicture: CircleAvatar(</span><br><span class="line">                      backgroundImage: NetworkImage(<span class="string">&quot;&lt;url&gt;&quot;</span>),</span><br><span class="line">                    ),</span><br><span class="line">                    otherAccountsPictures: [</span><br><span class="line">                      CircleAvatar(</span><br><span class="line">                        backgroundImage: NetworkImage(<span class="string">&quot;&lt;url&gt;&quot;</span>),</span><br><span class="line">                      ),</span><br><span class="line">                      CircleAvatar(</span><br><span class="line">                        backgroundImage: NetworkImage(<span class="string">&quot;&lt;url&gt;&quot;</span>),</span><br><span class="line">                      )</span><br><span class="line">                    ],</span><br><span class="line">                  ),</span><br><span class="line">                )</span><br><span class="line">              ],</span><br><span class="line">            )</span><br><span class="line">          ],</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="AppBar顶部导航栏"><a href="#AppBar顶部导航栏" class="headerlink" title="AppBar顶部导航栏"></a>AppBar顶部导航栏</h2><blockquote>
+<p><code>title</code>：标题<br><code>leading</code>：左侧图标，通常是菜单图标或返回图标<br><code>actions</code>：右侧图标，可以定义多个<br><code>backgroundColor</code>：背景颜色</p>
+</blockquote>
+<div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(MaterialApp(</span><br><span class="line">    home: Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: <span class="keyword">const</span> Text(<span class="string">&quot;文本内容&quot;</span>),</span><br><span class="line">        leading: IconButton(</span><br><span class="line">          icon: <span class="keyword">const</span> Icon(Icons.menu),</span><br><span class="line">          onPressed: () &#123;&#125;,</span><br><span class="line">        ),</span><br><span class="line">        actions: [</span><br><span class="line">          IconButton(</span><br><span class="line">            icon: <span class="keyword">const</span> Icon(Icons.search),</span><br><span class="line">            onPressed: () &#123;&#125;,</span><br><span class="line">          )</span><br><span class="line">        ],</span><br><span class="line">        backgroundColor: Colors.red,</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="实现通过顶部导航栏切换页面"><a href="#实现通过顶部导航栏切换页面" class="headerlink" title="实现通过顶部导航栏切换页面"></a>实现通过顶部导航栏切换页面</h3><ul>
+<li><code>TabController</code>的<code>length</code>，与<code>TabBar</code>的<code>tabs</code>数量要保持一致</li>
+<li><code>TabController</code>的<code>length</code>，与<code>TabBarView</code>的<code>children</code>数量要保持一致</li>
+</ul>
+<blockquote>
+<p><code>isScrollable</code>：定义是否可以滚动<br><code>indicatorColor</code>：指示器（当前选项卡底部的光标）的颜色<br><code>indicatorWeight</code>：指示器的粗细<br><code>indicatorSize</code>：指示器的长度</p>
+<blockquote>
+<p><code>TabBarIndicatorSize.label</code>：与文字等长<br><code>TabBarIndicatorSize.tab</code>：与标签等长</p>
+</blockquote>
+<p><code>indicator</code>：指示器样式</p>
+<blockquote>
+<p><code>color</code>：指示器背景颜色<br><code>borderRadius</code>：指示器圆角</p>
+</blockquote>
+<p><code>labelColor</code>：所有文字颜色<br><code>unselectedLabelColor</code>：未选中文字颜色<br><code>labelStyle</code>：文字样式</p>
+<blockquote>
+<p><code>fontSize</code>：字号</p>
+</blockquote>
+<p><code>padding</code>：边距</p>
+</blockquote>
+<div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp( <span class="keyword">const</span> MaterialApp(</span><br><span class="line">    title: <span class="string">&quot;文本内容&quot;</span>,</span><br><span class="line">    home: App(),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">App</span> <span class="keyword">extends</span> <span class="title">StatefulWidget</span> </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> App(&#123;<span class="keyword">super</span>.key&#125;);</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  State&lt;App&gt; createState() =&gt; _AppState();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">_AppState</span> <span class="keyword">extends</span> <span class="title">State</span>&lt;<span class="title">App</span>&gt; <span class="title">with</span> <span class="title">SingleTickerProviderStateMixin</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">late</span> TabController _tabController;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> initState() &#123;</span><br><span class="line">    <span class="keyword">super</span>.initState();</span><br><span class="line">    _tabController = TabController(length: <span class="number">3</span>, vsync: <span class="keyword">this</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  Widget build(BuildContext context) &#123;</span><br><span class="line">    <span class="keyword">return</span> Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: <span class="keyword">const</span> Text(<span class="string">&quot;文本内容&quot;</span>),</span><br><span class="line">        bottom: TabBar(</span><br><span class="line">          controller: _tabController,</span><br><span class="line">          tabs: <span class="keyword">const</span> [</span><br><span class="line">            Tab(</span><br><span class="line">              child: Text(<span class="string">&quot;文本标题1&quot;</span>),</span><br><span class="line">            ),</span><br><span class="line">            Tab(</span><br><span class="line">              child: Text(<span class="string">&quot;文本标题2&quot;</span>),</span><br><span class="line">            ),</span><br><span class="line">            Tab(</span><br><span class="line">              child: Text(<span class="string">&quot;文本标题3&quot;</span>),</span><br><span class="line">            ),</span><br><span class="line">          ],</span><br><span class="line">          isScrollable: <span class="keyword">true</span>,</span><br><span class="line">          indicatorColor: Colors.white,</span><br><span class="line">          indicatorWeight: <span class="number">2</span>,</span><br><span class="line">          indicatorSize: TabBarIndicatorSize.tab,</span><br><span class="line">          indicator: BoxDecoration(</span><br><span class="line">            color: Colors.black,</span><br><span class="line">            borderRadius: BorderRadius.circular(<span class="number">5</span>),</span><br><span class="line">          ),</span><br><span class="line">          labelColor: Colors.red,</span><br><span class="line">          unselectedLabelColor: Colors.white,</span><br><span class="line">          labelStyle: <span class="keyword">const</span> TextStyle(</span><br><span class="line">            fontSize: <span class="number">20</span></span><br><span class="line">          ),</span><br><span class="line">          padding: <span class="keyword">const</span> EdgeInsets.all(<span class="number">5</span>),</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">      body: TabBarView(</span><br><span class="line">        controller: _tabController,</span><br><span class="line">        children: [</span><br><span class="line">          ListView(</span><br><span class="line">            children: <span class="keyword">const</span> [</span><br><span class="line">              ListTile(</span><br><span class="line">                title: Text(<span class="string">&quot;文本内容1&quot;</span>),</span><br><span class="line">              ),</span><br><span class="line">            ],</span><br><span class="line">          ),</span><br><span class="line">          ListView(</span><br><span class="line">            children: <span class="keyword">const</span> [</span><br><span class="line">              ListTile(</span><br><span class="line">                title: Text(<span class="string">&quot;文本内容2&quot;</span>),</span><br><span class="line">              ),</span><br><span class="line">            ],</span><br><span class="line">          ),</span><br><span class="line">          ListView(</span><br><span class="line">            children: <span class="keyword">const</span> [</span><br><span class="line">              ListTile(</span><br><span class="line">                title: Text(<span class="string">&quot;文本内容3&quot;</span>),</span><br><span class="line">              ),</span><br><span class="line">            ],</span><br><span class="line">          ),</span><br><span class="line">        ],</span><br><span class="line">      ),</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="获取当前选中的tab索引值"><a href="#获取当前选中的tab索引值" class="headerlink" title="获取当前选中的tab索引值"></a>获取当前选中的tab索引值</h4><ul>
+<li>监听tabController的改变事件，获取当前选中的tab索引值</li>
+</ul>
+<div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@override</span></span><br><span class="line"><span class="keyword">void</span> initState() &#123;</span><br><span class="line">  <span class="keyword">super</span>.initState();</span><br><span class="line">  _tabController = TabController(length: <span class="number">3</span>, vsync: <span class="keyword">this</span>);</span><br><span class="line">  <span class="comment">// 监听tabController的改变事件，获取当前选中的tab索引值</span></span><br><span class="line">  _tabController.addListener(() &#123;</span><br><span class="line">    <span class="keyword">if</span> (_tabController.animation!.value == _tabController.index) &#123;</span><br><span class="line">      <span class="built_in">print</span>(_tabController.index);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="销毁controller"><a href="#销毁controller" class="headerlink" title="销毁controller"></a>销毁controller</h4><div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@override</span></span><br><span class="line"><span class="keyword">void</span> dispose() &#123;</span><br><span class="line">  <span class="keyword">super</span>.dispose();</span><br><span class="line">  _tabController.dispose();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="定义顶部导航栏高度"><a href="#定义顶部导航栏高度" class="headerlink" title="定义顶部导航栏高度"></a>定义顶部导航栏高度</h3><div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(MaterialApp(</span><br><span class="line">    home: Scaffold(</span><br><span class="line">      appBar: PreferredSize(</span><br><span class="line">        preferredSize: <span class="keyword">const</span> Size.fromHeight(<span class="number">50</span>),</span><br><span class="line">        child: AppBar(</span><br><span class="line">          title: <span class="keyword">const</span> Text(<span class="string">&quot;文本内容&quot;</span>),</span><br><span class="line">        ),</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="定义顶部导航栏阴影"><a href="#定义顶部导航栏阴影" class="headerlink" title="定义顶部导航栏阴影"></a>定义顶部导航栏阴影</h3><blockquote>
+<p><code>elevation</code>：定义顶部导航栏阴影大小</p>
+</blockquote>
+<div class="highlight-container" data-rel="Dart"><figure class="iseeu highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">&#x27;package:flutter/material.dart&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> main() &#123;</span><br><span class="line">  runApp(MaterialApp(</span><br><span class="line">    home: Scaffold(</span><br><span class="line">      appBar: AppBar(</span><br><span class="line">        title: <span class="keyword">const</span> Text(<span class="string">&quot;文本内容&quot;</span>),</span><br><span class="line">        elevation: <span class="number">10</span>,</span><br><span class="line">      ),</span><br><span class="line">    ),</span><br><span class="line">  ));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2><h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p><a href="/302.html?target=https://www.bilibili.com/video/BV1S4411E7LY">哔哩哔哩——筱筱知晓</a></p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Dart/">#Dart</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Flutter/">#Flutter</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2023/06/24/Flutter%E7%9A%84Container%E5%AE%B9%E5%99%A8%E7%BB%84%E4%BB%B6/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">【笔记】Flutter的Container容器组件</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2023/06/24/Flutter%E7%9A%84MaterialApp%E6%9D%90%E6%96%99%E7%BB%84%E4%BB%B6/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">【笔记】Flutter的MaterialApp材料组件</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div class="twikoo-container">
+        <script data-swup-reload-script
+                src='https://cdn.staticfile.org/twikoo/1.6.10/twikoo.all.min.js'
+        ></script>
+        <div id="twikoo-comment"></div>
+        <script data-swup-reload-script>
+            function loadTwikoo() {
+                twikoo.init({
+                    el: '#twikoo-comment',
+                    envId: 'https://twikoo.loli.fj.cn',
+                });
+            }
+
+            if ('true') {
+                const loadTwikooTimeout = setTimeout(() => {
+                    loadTwikoo();
+                    clearTimeout(loadTwikooTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadTwikoo);
+            }
+        </script>
+    </div>
+
+
+        
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">【笔记】Flutter的Scaffold脚手架组件</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Scaffold%E7%BB%84%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">Scaffold组件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BottomNavigationBar%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F"><span class="nav-number">3.</span> <span class="nav-text">BottomNavigationBar底部导航栏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E4%B8%AD%E9%97%B4%E5%87%B8%E8%B5%B7%E7%9A%84%E5%BA%95%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F"><span class="nav-number">3.1.</span> <span class="nav-text">实现中间凸起的底部导航栏</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BE%A7%E8%BE%B9%E6%A0%8F"><span class="nav-number">4.</span> <span class="nav-text">侧边栏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%8F%9C%E5%8D%95%E6%A0%8F%E5%A4%B4%E9%83%A8"><span class="nav-number">4.1.</span> <span class="nav-text">菜单栏头部</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%A4%B4%E9%83%A8%E8%83%8C%E6%99%AF%E5%9B%BE%E5%8D%A0%E6%BB%A1%E4%BE%A7%E8%BE%B9%E6%A0%8F"><span class="nav-number">4.1.1.</span> <span class="nav-text">头部背景图占满侧边栏</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%9A%E8%BF%87Drawer%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.1.1.1.</span> <span class="nav-text">通过Drawer实现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%80%9A%E8%BF%87UserAccountsDrawerHeader%E5%AE%9E%E7%8E%B0"><span class="nav-number">4.1.1.2.</span> <span class="nav-text">通过UserAccountsDrawerHeader实现</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#AppBar%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F"><span class="nav-number">5.</span> <span class="nav-text">AppBar顶部导航栏</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9E%E7%8E%B0%E9%80%9A%E8%BF%87%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F%E5%88%87%E6%8D%A2%E9%A1%B5%E9%9D%A2"><span class="nav-number">5.1.</span> <span class="nav-text">实现通过顶部导航栏切换页面</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8E%B7%E5%8F%96%E5%BD%93%E5%89%8D%E9%80%89%E4%B8%AD%E7%9A%84tab%E7%B4%A2%E5%BC%95%E5%80%BC"><span class="nav-number">5.1.1.</span> <span class="nav-text">获取当前选中的tab索引值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%94%80%E6%AF%81controller"><span class="nav-number">5.1.2.</span> <span class="nav-text">销毁controller</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F%E9%AB%98%E5%BA%A6"><span class="nav-number">5.2.</span> <span class="nav-text">定义顶部导航栏高度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89%E9%A1%B6%E9%83%A8%E5%AF%BC%E8%88%AA%E6%A0%8F%E9%98%B4%E5%BD%B1"><span class="nav-number">5.3.</span> <span class="nav-text">定义顶部导航栏阴影</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%88%90"><span class="nav-number">6.</span> <span class="nav-text">完成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">7.</span> <span class="nav-text">参考文献</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2019</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">绯鞠</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 2844 篇文章
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.4</a></span>
+        </div>
+        
+            <div class="icp-info my-1"><a target="_blank" rel="nofollow" href="
+                
+                https://beian.miit.gov.cn
+                
+                ">蒙ICP备2022003684号</a></div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex justify-center items-center">
+                <a class="flex justify-center items-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Hexo Theme Redefine">
+    
+    <meta name="author" content="绯鞠">
+    <!-- preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    
+    <!--- Seo Part-->
+    
+    <link rel="canonical" href="https://loli.fj.cn/2022/11/23/中断/"/>
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+    
+        <meta name="description" content="前言中断学习笔记注意：本文所有代码均按照sdcc编译器代码规范编写，如果使用的Keli编译器，需要自行修改代码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【笔记】中断">
+<meta property="og:url" content="https://loli.fj.cn/2022/11/23/%E4%B8%AD%E6%96%AD/index.html">
+<meta property="og:site_name" content="绯鞠的博客">
+<meta property="og:description" content="前言中断学习笔记注意：本文所有代码均按照sdcc编译器代码规范编写，如果使用的Keli编译器，需要自行修改代码">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2022-11-23T12:26:59.000Z">
+<meta property="article:modified_time" content="2024-07-12T10:53:28.835Z">
+<meta property="article:author" content="绯鞠">
+<meta property="article:tag" content="Microcontroller">
+<meta name="twitter:card" content="summary">
+    
+    
+    <!--- Icon Part-->
+    <link rel="icon" type="image/png" href="/dist/images/favicon_package/favicon.ico" sizes="192x192">
+    <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/favicon_package/favicon.ico">
+    <meta name="theme-color" content="#F6CDE1">
+    <link rel="shortcut icon" href="/dist/images/favicon_package/favicon.ico">
+    <!--- Page Info-->
+    
+    <title>
+        
+            【笔记】中断 -
+        
+        绯鞠的博客
+    </title>
+
+    
+<link rel="stylesheet" href="/fonts/Chillax/chillax.css">
+
+
+    <!--- Inject Part-->
+    
+
+    
+<link rel="stylesheet" href="/css/style.css">
+
+
+    
+        
+<link rel="stylesheet" href="/assets/build/styles.css">
+
+    
+
+    
+<link rel="stylesheet" href="/fonts/GeistMono/geist-mono.css">
+
+    
+<link rel="stylesheet" href="/fonts/Geist/geist.css">
+
+    <!--- Font Part-->
+    
+        <link href="/dist/css/fonts.css" rel="stylesheet">
+    
+    
+        <link href="/dist/css/fonts.css" rel="stylesheet">
+    
+    
+    
+
+    
+        
+<script src="/js/libs/anime.min.js"></script>
+
+    
+
+    <script id="hexo-configurations">
+    window.config = {"hostname":"loli.fj.cn","root":"/","language":"zh-CN","path":"search.xml"};
+    window.theme = {"articles":{"style":{"font_size":"16px","line_height":1.5,"image_border_radius":"14px","image_alignment":"center","image_caption":false,"link_icon":true,"title_alignment":"left","headings_top_spacing":{"h1":"3.2rem","h2":"2.4rem","h3":"1.9rem","h4":"1.6rem","h5":"1.4rem","h6":"1.3rem"}},"word_count":{"enable":false,"count":true,"min2read":true},"author_label":{"enable":true,"auto":false,"list":[]},"code_block":{"copy":true,"style":"mac","font":{"enable":true,"family":"Consolas","url":"/dist/css/fonts.css"}},"toc":{"enable":true,"max_depth":6,"number":true,"expand":true,"init_open":true},"copyright":{"enable":false,"default":"cc_by_nc_sa"},"lazyload":false,"recommendation":{"enable":false,"title":"推荐阅读","limit":3,"mobile_limit":2,"placeholder":"/images/wallhaven-wqery6-light.webp","skip_dirs":[]}},"colors":{"primary":"#F6CDE1","secondary":null,"default_mode":"light"},"global":{"fonts":{"chinese":{"enable":false,"family":null,"url":null},"english":{"enable":false,"family":null,"url":null}},"content_max_width":"1000px","sidebar_width":"210px","hover":{"shadow":true,"scale":false},"scroll_progress":{"bar":true,"percentage":true},"website_counter":{"url":"https://cn.vercount.one/js","enable":true,"site_pv":true,"site_uv":true,"post_pv":false},"single_page":true,"preloader":true,"open_graph":true,"google_analytics":{"enable":false,"id":null}},"home_banner":{"enable":true,"style":"fixed","image":{"light":"/images/wallhaven-wqery6-light.webp","dark":"/images/wallhaven-wqery6-dark.webp"},"title":"绯鞠的博客","subtitle":{"text":[],"hitokoto":{"enable":true,"api":"https://v1.hitokoto.cn"},"typing_speed":100,"backing_speed":80,"starting_delay":500,"backing_delay":1500,"loop":true,"smart_backspace":true},"text_color":{"light":"#fff","dark":"#d1d1b6"},"text_style":{"title_size":"2.8rem","subtitle_size":"1.5rem","line_height":1.2},"custom_font":{"enable":true,"family":"DroidSansChinese","url":"/dist/css/fonts.css"},"social_links":{"enable":true,"style":"default","links":{"github":null,"instagram":null,"zhihu":null,"twitter":null,"email":"mailto:00-isomer-cabbies@icloud.com","telegram":"https://t.me/LittleSweetCookie"},"qrs":{"weixin":null}}},"plugins":{"feed":{"enable":true},"aplayer":{"enable":false,"type":"fixed","audios":[{"name":null,"artist":null,"url":null,"cover":null,"lrc":null}]},"mermaid":{"enable":true,"version":"9.3.0"}},"version":"2.6.4","navbar":{"auto_hide":false,"color":{"left":"#f78736","right":"#367df7","transparency":35},"width":{"home":"1200px","pages":"1000px"},"links":{"Home":{"path":"/","icon":"fa-regular fa-home"},"About":{"path":"/about/","icon":"fa-regular fa-user"},"Tags":{"path":"/tags/","icon":"fa-regular fa-tags"},"Categories":{"path":"/categories/","icon":"fa-regular fa-th"},"Archives":{"path":"/archives/","icon":"fa-regular fa-archive"},"更多":{"submenus":{"友链":"/links/","赞助":"/reward/","订阅":"/atom.xml","主题":"//cards.loli.fj.cn"}}},"search":{"enable":true,"preload":true}},"page_templates":{"friends_column":2,"tags_style":"blur"},"home":{"sidebar":{"enable":true,"position":"left","first_item":"menu","announcement":null,"show_on_mobile":true,"links":null},"article_date_format":"YYYY-MM-DD","categories":{"enable":true,"limit":3},"tags":{"enable":true,"limit":3}},"footerStart":"2019/11/22 15:53:18"};
+    window.lang_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+    window.data = {"masonry":false};
+  </script>
+    
+    <!--- Fontawesome Part-->
+    
+<link rel="stylesheet" href="/fontawesome/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/brands.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/solid.min.css">
+
+    
+<link rel="stylesheet" href="/fontawesome/regular.min.css">
+
+    
+    
+    
+    
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="绯鞠的博客" type="application/atom+xml">
+</head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+        <span class="scroll-progress-bar"></span>
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+<!--        <span class="swup-progress-icon">-->
+<!--            <i class="fa-solid fa-circle-notch fa-spin"></i>-->
+<!--        </span>-->
+    
+</div>
+
+
+
+    <style>
+    :root {
+        --preloader-background-color: #fff;
+        --preloader-text-color: #000;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --preloader-background-color: #202124;
+            --preloader-text-color: #fff;
+        }
+    }
+
+    @media (prefers-color-scheme: light) {
+        :root {
+            --preloader-background-color: #fff;
+            --preloader-text-color: #000;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .ml13 {
+            font-size: 2.6rem !important; /* Adjust this value as needed */
+        }
+    }
+
+    .preloader {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem; /* Tailwind 'gap-4' is 1rem */
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        padding: 12px;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh; /* 'h-screen' is 100% of the viewport height */
+        background-color: var(--preloader-background-color);
+        z-index: 1100; /* 'z-[1100]' sets the z-index */
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .ml13 {
+        font-size: 3.2rem;
+        /* text-transform: uppercase; */
+        color: var(--preloader-text-color);
+        letter-spacing: -1px;
+        font-weight: 500;
+        font-family: 'Chillax-Variable', sans-serif;
+        text-align: center;
+    }
+
+    .ml13 .word {
+        display: inline-flex;
+        flex-wrap: wrap;
+        white-space: nowrap;
+    }
+
+    .ml13 .letter {
+        display: inline-block;
+        line-height: 1em;
+    }
+</style>
+
+<div class="preloader">
+    <h2 class="ml13">
+        绯鞠的博客
+    </h2>
+    <script>
+        var textWrapper = document.querySelector('.ml13');
+        // Split text into words
+        var words = textWrapper.textContent.trim().split(' ');
+
+        // Clear the existing content
+        textWrapper.innerHTML = '';
+
+        // Wrap each word and its letters in spans
+        words.forEach(function(word) {
+            var wordSpan = document.createElement('span');
+            wordSpan.classList.add('word');
+            wordSpan.innerHTML = word.replace(/\S/g, "<span class='letter'>$&</span>");
+            textWrapper.appendChild(wordSpan);
+            textWrapper.appendChild(document.createTextNode(' ')); // Add space between words
+        });
+
+        var animation = anime.timeline({loop: true})
+            .add({
+                targets: '.ml13 .letter',
+                translateY: [40,0],
+                translateZ: 0,
+                opacity: [0,1],
+                filter: ['blur(5px)', 'blur(0px)'], // Starting from blurred to unblurred
+                easing: "easeOutExpo",
+                duration: 1400,
+                delay: (el, i) => 300 + 30 * i,
+            }).add({
+                targets: '.ml13 .letter',
+                translateY: [0,-40],
+                opacity: [1,0],
+                filter: ['blur(0px)', 'blur(5px)'], // Ending from unblurred to blurred
+                easing: "easeInExpo",
+                duration: 1200,
+                delay: (el, i) => 100 + 30 * i,
+                complete: function() {
+                    hidePreloader(); // Call hidePreloader after the animation completes
+                }
+            });
+
+        let themeStatus = JSON.parse(localStorage.getItem('REDEFINE-THEME-STATUS'))?.isDark;
+
+        // If the theme status is not found in local storage, check the preferred color scheme
+        if (themeStatus === undefined || themeStatus === null) {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                themeStatus = 'dark';
+            } else {
+                themeStatus = 'light';
+            }
+        }
+
+        // Now you can use the themeStatus variable in your code
+        if (themeStatus) {
+            document.documentElement.style.setProperty('--preloader-background-color', '#202124');
+            document.documentElement.style.setProperty('--preloader-text-color', '#fff');
+        } else {
+            document.documentElement.style.setProperty('--preloader-background-color', '#fff');
+            document.documentElement.style.setProperty('--preloader-text-color', '#000');
+        }
+
+        window.addEventListener('load', function () {
+            setTimeout(hidePreloader, 5000); // Call hidePreloader after 5000 milliseconds if not already called by animation
+        });
+
+        function hidePreloader() {
+            var preloader = document.querySelector('.preloader');
+            preloader.style.opacity = '0';
+            setTimeout(function () {
+                preloader.style.display = 'none';
+            }, 200);
+        }
+    </script>
+</div>
+
+<main class="page-container" id="swup">
+
+    
+
+    <div class="main-content-container">
+
+
+        <div class="main-content-header">
+            <header class="navbar-container px-6 md:px-12">
+
+    <div class="navbar-content ">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="/dist/images/avatar.gif">
+                </a>
+            
+            <a class="logo-title" href="/">
+                
+                绯鞠的博客
+                
+            </a>
+        </div>
+
+        <div class="right">
+            <!-- PC -->
+            <div class="desktop">
+                <ul class="navbar-list">
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/"
+                                        >
+                                    <i class="fa-regular fa-home fa-fw"></i>
+                                    首页
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/about/"
+                                        >
+                                    <i class="fa-regular fa-user fa-fw"></i>
+                                    关于
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/tags/"
+                                        >
+                                    <i class="fa-regular fa-tags fa-fw"></i>
+                                    标签
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/categories/"
+                                        >
+                                    <i class="fa-regular fa-th fa-fw"></i>
+                                    分类
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class=""
+                                   href="/archives/"
+                                        >
+                                    <i class="fa-regular fa-archive fa-fw"></i>
+                                    归档
+                                    
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                            </li>
+                    
+                        
+                            
+
+                            <li class="navbar-item">
+                                <!-- Menu -->
+                                <a class="has-dropdown"
+                                   href="#"
+                                        onClick=&#34;return false;&#34;>
+                                    
+                                    更多
+                                    <i class="fa-solid fa-chevron-down fa-fw"></i>
+                                </a>
+
+                                <!-- Submenu -->
+                                
+                                    <ul class="sub-menu">
+                                        
+                                            <li>
+                                                <a href="/links/">
+                                                    友链
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/reward/">
+                                                    赞助
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a href="/atom.xml">
+                                                    订阅
+                                                </a>
+                                            </li>
+                                        
+                                            <li>
+                                                <a target="_blank" rel="noopener" href="//cards.loli.fj.cn">
+                                                    主题
+                                                </a>
+                                            </li>
+                                        
+                                    </ul>
+                                
+                            </li>
+                    
+                    
+                        <li class="navbar-item search search-popup-trigger">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <!-- Mobile -->
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                
+                <div class="icon-item navbar-bar">
+                    <div class="navbar-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sheet -->
+    <div class="navbar-drawer h-screen w-full absolute top-0 left-0 bg-background-color flex flex-col justify-between">
+        <ul class="drawer-navbar-list flex flex-col px-4 justify-center items-start">
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/"
+                        >
+                            <span>
+                                首页
+                            </span>
+                            
+                                <i class="fa-regular fa-home fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/about/"
+                        >
+                            <span>
+                                关于
+                            </span>
+                            
+                                <i class="fa-regular fa-user fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/tags/"
+                        >
+                            <span>
+                                标签
+                            </span>
+                            
+                                <i class="fa-regular fa-tags fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/categories/"
+                        >
+                            <span>
+                                分类
+                            </span>
+                            
+                                <i class="fa-regular fa-th fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item text-base my-1.5 flex flex-col w-full">
+                        
+                        <a class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                           href="/archives/"
+                        >
+                            <span>
+                                归档
+                            </span>
+                            
+                                <i class="fa-regular fa-archive fa-sm fa-fw"></i>
+                            
+                        </a>
+                        
+
+                        
+                    </li>
+            
+                
+                    
+
+                    <li class="drawer-navbar-item-sub text-base my-1.5 flex flex-col w-full">
+                        
+                        <div class="py-1.5 px-2 flex flex-row items-center justify-between gap-1 hover:!text-primary active:!text-primary cursor-pointer text-2xl font-semibold group border-b border-border-color hover:border-primary w-full "
+                             navbar-data-toggle="submenu-更多"
+                        >
+                            <span>
+                                更多
+                            </span>
+                            
+                        </div>
+                        
+
+                        
+                            <div class="flex-col items-start px-2 py-2 hidden" data-target="submenu-更多">
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/links/">友链</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/reward/">赞助</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           href="/atom.xml">订阅</a>
+                                    </div>
+                                
+                                    <div class="drawer-navbar-item text-base flex flex-col justify-center items-start hover:underline active:underline hover:underline-offset-1 rounded-3xl">
+                                        <a class=" text-third-text-color text-xl"
+                                           target="_blank" rel="noopener" href="//cards.loli.fj.cn">主题</a>
+                                    </div>
+                                
+                            </div>
+                        
+                    </li>
+            
+
+            
+            
+        </ul>
+
+        <div class="statistics flex justify-around my-2.5">
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/tags">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">114</div>
+        <div class="label text-third-text-color text-sm">标签</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/categories">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">17</div>
+        <div class="label text-third-text-color text-sm">分类</div>
+    </a>
+    <a class="item tag-count-item flex flex-col justify-center items-center w-20" href="/archives">
+        <div class="number text-2xl sm:text-xl text-second-text-color font-semibold">2844</div>
+        <div class="label text-third-text-color text-sm">文章</div>
+    </a>
+</div>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="main-content-body">
+
+            
+
+            <div class="main-content">
+
+                
+                    <div class="post-page-container flex relative justify-between box-border w-full h-full">
+    <div class="article-content-container">
+
+        <div class="article-title relative w-full">
+            
+                <div class="w-full flex items-center pt-6 justify-start">
+                    <h1 class="article-title-regular text-second-text-color tracking-tight text-4xl md:text-6xl font-semibold px-2 sm:px-6 md:px-8 py-3">【笔记】中断</h1>
+                </div>
+            
+            </div>
+
+        
+            <div class="article-header flex flex-row gap-2 items-center px-2 sm:px-6 md:px-8">
+                <div class="avatar w-[46px] h-[46px] flex-shrink-0 rounded-medium border border-border-color p-[1px]">
+                    <img src="/dist/images/avatar.jpg">
+                </div>
+                <div class="info flex flex-col justify-between">
+                    <div class="author flex items-center">
+                        <span class="name text-default-text-color text-lg font-semibold">绯鞠</span>
+                        
+                            <span class="author-label ml-1.5 text-xs px-2 py-0.5 rounded-small text-third-text-color border border-shadow-color-1">Lv10</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fa-regular fa-pen-fancy"></i>&nbsp;
+        <span class="desktop">2022-11-23 12:26:59</span>
+        <span class="mobile">2022-11-23 12:26:59</span>
+        <span class="hover-info">创建</span>
+    </span>
+    
+        <span class="article-date article-meta-item">
+            <i class="fa-regular fa-wrench"></i>&nbsp;
+            <span class="desktop">2024-07-12 10:53:28</span>
+            <span class="mobile">2024-07-12 10:53:28</span>
+            <span class="hover-info">更新</span>
+        </span>
+    
+
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fa-regular fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Microcontroller/">Microcontroller</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+    
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        
+
+
+        <div class="article-content markdown-body px-2 sm:px-6 md:px-8 pb-8">
+            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>中断学习笔记<br>注意：本文所有代码均按照sdcc编译器代码规范编写，如果使用的Keli编译器，需要自行修改代码</p>
+<span id="more"></span>
+
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>中断：打断CPU当前工作的一种事件</li>
+<li>中断源：所有可以引发中断的事件的集合<ul>
+<li>标准51单片机的中断源（5种&#x2F;3类）<ul>
+<li>外部中断：由单片机引脚输入的中断<ul>
+<li>外部中断0</li>
+<li>外部中断1</li>
+</ul>
+</li>
+<li>定时&#x2F;计数器中断：由定时&#x2F;计数器引起的中断<ul>
+<li>定时&#x2F;计数器0中断</li>
+<li>定时&#x2F;计数器1中断</li>
+</ul>
+</li>
+<li>串行中断：由串行通讯（发送串行数据、接收串行数据）引起的中断<ul>
+<li>串行中断</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>中断向量：中断函数的入口地址<ul>
+<li>在C51代码中，通常不直接使用中断向量，而是根据头文件中指定的指针变量来使用中断向量</li>
+</ul>
+</li>
+</ul>
+<h2 id="外部中断"><a href="#外部中断" class="headerlink" title="外部中断"></a>外部中断</h2><h3 id="数字信号的种类（4种-x2F-2类）"><a href="#数字信号的种类（4种-x2F-2类）" class="headerlink" title="数字信号的种类（4种&#x2F;2类）"></a>数字信号的种类（4种&#x2F;2类）</h3><ul>
+<li>电平信号<ul>
+<li>高电平信号</li>
+<li>低电平信号</li>
+</ul>
+</li>
+<li>边沿信号<ul>
+<li>上升沿信号</li>
+<li>下降沿信号</li>
+</ul>
+</li>
+</ul>
+<h3 id="外部中断请求类型"><a href="#外部中断请求类型" class="headerlink" title="外部中断请求类型"></a>外部中断请求类型</h3><ul>
+<li>标准51单片机支持的外部中断请求类型<ul>
+<li>低电平请求</li>
+<li>下降沿请求</li>
+</ul>
+</li>
+</ul>
+<h3 id="STC12C5A60S2使用外部中断"><a href="#STC12C5A60S2使用外部中断" class="headerlink" title="STC12C5A60S2使用外部中断"></a>STC12C5A60S2使用外部中断</h3><ol>
+<li><a href="/2022/11/23/%E4%B8%AD%E6%96%AD/#%E5%BC%80%E4%B8%AD%E6%96%AD">开中断</a>：STC12C5A60S2的12引脚默认为P3.2端口、13引脚默认为P3.3端口。如果需要开中断，需要将12引脚切换为INT0端口、将13引脚设置为INT1端口</li>
+<li><a href="/2022/11/23/%E4%B8%AD%E6%96%AD/#%E6%8C%87%E5%AE%9A%E4%B8%AD%E6%96%AD%E8%AF%B7%E6%B1%82%E7%B1%BB%E5%9E%8B">指定中断请求类型</a>（低电平请求、下降沿请求）：虽然标准51单片机支持2种中断请求，但是使用时只能设置1种，每次需要中断时，通过这1种中断请求实现中断</li>
+<li><a href="/2022/11/23/%E4%B8%AD%E6%96%AD/#%E6%8C%87%E5%AE%9A%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0">指定中断处理函数</a>：当检测到中断请求后，立即执行中断处理函数</li>
+</ol>
+<h4 id="开中断"><a href="#开中断" class="headerlink" title="开中断"></a>开中断</h4><ul>
+<li>通过IE寄存器实现开中断</li>
+<li>IE寄存器是可以位寻址的</li>
+<li>IE寄存器从第8位（最高位）到第1位（最低位）分别是：<code>EA</code>、<code>空</code>、<code>空</code>、<code>ES</code>、<code>ET1</code>、<code>EX1</code>、<code>ET0</code>、<code>EX0</code><ul>
+<li><code>EA</code>：中断总开（1）关（0）</li>
+<li><code>EX0</code>：外部中断0的开（1）关（0）</li>
+<li><code>EX1</code>：外部中断1的开（1）关（0）</li>
+<li><code>ET0</code>：定时&#x2F;计数器0的开（1）关（0）</li>
+<li><code>ET1</code>：定时&#x2F;计数器1的开（1）关（0）</li>
+<li><code>ES</code>：串行中断的开（1）关（0）</li>
+</ul>
+</li>
+</ul>
+<h5 id="关闭所有中断"><a href="#关闭所有中断" class="headerlink" title="关闭所有中断"></a>关闭所有中断</h5><h6 id="通过字节寻址"><a href="#通过字节寻址" class="headerlink" title="通过字节寻址"></a>通过字节寻址</h6><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IE = <span class="number">0x00</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="通过位寻址"><a href="#通过位寻址" class="headerlink" title="通过位寻址"></a>通过位寻址</h6><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EA = <span class="number">0</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="开启外部中断0"><a href="#开启外部中断0" class="headerlink" title="开启外部中断0"></a>开启外部中断0</h5><h6 id="通过字节寻址-1"><a href="#通过字节寻址-1" class="headerlink" title="通过字节寻址"></a>通过字节寻址</h6><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IE = <span class="number">0x81</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="通过位寻址-1"><a href="#通过位寻址-1" class="headerlink" title="通过位寻址"></a>通过位寻址</h6><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EA = <span class="number">1</span>;</span><br><span class="line">EX0 = <span class="number">1</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="开启外部中断1"><a href="#开启外部中断1" class="headerlink" title="开启外部中断1"></a>开启外部中断1</h5><h6 id="通过字节寻址-2"><a href="#通过字节寻址-2" class="headerlink" title="通过字节寻址"></a>通过字节寻址</h6><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IE = <span class="number">0x84</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="通过位寻址-2"><a href="#通过位寻址-2" class="headerlink" title="通过位寻址"></a>通过位寻址</h6><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">EA = <span class="number">1</span>;</span><br><span class="line">EX1 = <span class="number">1</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="同时开启外部中断0和外部中断1"><a href="#同时开启外部中断0和外部中断1" class="headerlink" title="同时开启外部中断0和外部中断1"></a>同时开启外部中断0和外部中断1</h5><h6 id="通过字节寻址-3"><a href="#通过字节寻址-3" class="headerlink" title="通过字节寻址"></a>通过字节寻址</h6><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IE = <span class="number">0x85</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="通过位寻址-3"><a href="#通过位寻址-3" class="headerlink" title="通过位寻址"></a>通过位寻址</h6><div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">EA = <span class="number">1</span>;</span><br><span class="line">EX0 = <span class="number">1</span>;</span><br><span class="line">EX1 = <span class="number">1</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="指定中断请求类型"><a href="#指定中断请求类型" class="headerlink" title="指定中断请求类型"></a>指定中断请求类型</h4><ul>
+<li><p>通过TCON（Timer Config）寄存器的低4位指定中断请求的类型</p>
+</li>
+<li><p>TCON寄存器是可以位寻址的</p>
+</li>
+<li><p>TCON寄存器从第4位到第1位分别是：<code>IE1</code>、<code>IT1</code>、<code>IE0</code>、<code>IT0</code></p>
+<ul>
+<li><code>IT0</code>：设置外部中断0的请求类型为低电平请求（0）或下降沿请求（1）</li>
+<li><code>IT1</code>：设置外部中断1的请求类型为低电平请求（0）或下降沿请求（1）</li>
+<li><code>IE0</code>：外部中断0的使能信号。当外部中断0接收到中断信号后，CPU会自动将<code>IE0</code>设置为1；当外部中断0的中断信号处理结束后，CPU会自动将<code>IE0</code>设置为0</li>
+<li><code>IE1</code>：外部中断1的使能信号。当外部中断1接收到中断信号后，CPU会自动将<code>IE1</code>设置为1；当外部中断0的中断信号处理结束后，CPU会自动将<code>IE1</code>设置为0</li>
+</ul>
+</li>
+<li><p>中断按键：将一个普通按键，一端接GND，另一端接INT0或INT1</p>
+</li>
+</ul>
+<h5 id="中断请求类型设置为低电平请求（一个时刻）"><a href="#中断请求类型设置为低电平请求（一个时刻）" class="headerlink" title="中断请求类型设置为低电平请求（一个时刻）"></a>中断请求类型设置为低电平请求（一个时刻）</h5><ul>
+<li>这种方式如果中断按键按下时间过长，会导致中断处理函数执行多次</li>
+</ul>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IT0 = <span class="number">0</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="中断请求类型设置为下降沿请求（一个瞬间）"><a href="#中断请求类型设置为下降沿请求（一个瞬间）" class="headerlink" title="中断请求类型设置为下降沿请求（一个瞬间）"></a>中断请求类型设置为下降沿请求（一个瞬间）</h5><ul>
+<li>这种方式如果中断按键按下出现抖动，会导致中断处理函数执行多次</li>
+</ul>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">IT0 = <span class="number">1</span>;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="指定中断处理函数"><a href="#指定中断处理函数" class="headerlink" title="指定中断处理函数"></a>指定中断处理函数</h4><ul>
+<li>无参数列表</li>
+<li>无返回值</li>
+<li>无需声明，通常放在整个程序最后</li>
+<li>函数名自定义</li>
+<li>必须指定中断向量号</li>
+<li>中断处理函数不能手动调用</li>
+</ul>
+<p>中断向量：用于控制中断的内存地址<br>中断向量号：用于标记中断的编号，方便编程</p>
+<blockquote>
+<p><code>interrupt &lt;num&gt;</code>：指定中断向量号，取值范围为0~4</p>
+<blockquote>
+<p><code>0</code>：外部中断0<br><code>1</code>：定时&#x2F;计数器中断0<br><code>2</code>：外部中断1<br><code>3</code>：定时&#x2F;计数器中断1<br><code>4</code>：串行终端</p>
+</blockquote>
+</blockquote>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">int0</span><span class="params">(<span class="type">void</span>)</span> interrupt &lt;num&gt;</span><br><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="阻止中断的接收"><a href="#阻止中断的接收" class="headerlink" title="阻止中断的接收"></a>阻止中断的接收</h5><ul>
+<li>当一个中断处理函数正在执行时，阻止中断的接收</li>
+<li>阻止中断的接收可以用来消除抖动</li>
+</ul>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">int0</span><span class="params">(<span class="type">void</span>)</span> __interrupt 0</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 阻止中断的接收</span></span><br><span class="line">    EX0 = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 业务代码</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// 还原中断的接收</span></span><br><span class="line">    EX0 = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h4 id="完整代码示例"><a href="#完整代码示例" class="headerlink" title="完整代码示例"></a>完整代码示例</h4><ul>
+<li>利用外部中断0实现中断</li>
+</ul>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;8052.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">init</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 指定开启外部中断0</span></span><br><span class="line">    IE = <span class="number">0x81</span>;</span><br><span class="line">    <span class="comment">// 指定外部中断0的终端请求类型为下降沿请求</span></span><br><span class="line">    IT0 = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 指定外部中断0的中断函数</span></span><br><span class="line"><span class="type">void</span> <span class="title function_">int0</span><span class="params">(<span class="type">void</span>)</span> __interrupt 0</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 阻止中断的接收</span></span><br><span class="line">    EX0 = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">// 业务代码</span></span><br><span class="line">    ...</span><br><span class="line">    <span class="comment">// 还原中断的接收</span></span><br><span class="line">    EX0 = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="定时-x2F-计数器中断"><a href="#定时-x2F-计数器中断" class="headerlink" title="定时&#x2F;计数器中断"></a>定时&#x2F;计数器中断</h2><ul>
+<li><p>在标准51单片机上有2个16位的定时&#x2F;计数器</p>
+</li>
+<li><p>计数值：计数的总次数</p>
+</li>
+<li><p>计数初值：开始计数的起点</p>
+</li>
+<li><p>计数最大值：可以计数的上限</p>
+<ul>
+<li>51单片机做多可以计16位的数</li>
+</ul>
+</li>
+</ul>
+<h3 id="定时-x2F-计数器的计数方式"><a href="#定时-x2F-计数器的计数方式" class="headerlink" title="定时&#x2F;计数器的计数方式"></a>定时&#x2F;计数器的计数方式</h3><ul>
+<li>减计数：从计数初值（计数值）开始减到0。x86的PC使用的就是减计数的计数器</li>
+<li>加计数：从计数初值（最大值-计数值）开始加到计数器能力最大值。标准51单片机使用的就是加计数的计数器</li>
+</ul>
+<h3 id="定时-x2F-计数器的计数内容"><a href="#定时-x2F-计数器的计数内容" class="headerlink" title="定时&#x2F;计数器的计数内容"></a>定时&#x2F;计数器的计数内容</h3><ul>
+<li>定时器：数内部的时基（时间基准）</li>
+<li>计数器：数外部的脉冲信号周期（每个周期一高一低）</li>
+</ul>
+<h3 id="定时-x2F-计数器的时间计算"><a href="#定时-x2F-计数器的时间计算" class="headerlink" title="定时&#x2F;计数器的时间计算"></a>定时&#x2F;计数器的时间计算</h3><ul>
+<li>时钟周期：1个时钟周期 &#x3D; 1 &#x2F; 晶振的频率<ul>
+<li>如果51单片机接了一个<code>12MHz</code>的晶振，那么时钟周期为<code>1/12μs</code></li>
+</ul>
+</li>
+<li>机器周期：1个机器周期 &#x3D; 12 * 时钟周期<ul>
+<li>如果51单片机接了一个<code>12MHz</code>的晶振，那么机器周期为<code>1μs</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="STC12C5A60S2使用计数器中断"><a href="#STC12C5A60S2使用计数器中断" class="headerlink" title="STC12C5A60S2使用计数器中断"></a>STC12C5A60S2使用计数器中断</h3><ol>
+<li><a href="/2022/11/23/%E4%B8%AD%E6%96%AD/#%E5%BC%80%E4%B8%AD%E6%96%AD">开中断</a></li>
+<li><a href="/2022/11/23/%E4%B8%AD%E6%96%AD/#%E6%8C%87%E5%AE%9A%E6%A8%A1%E5%BC%8F">指定模式</a></li>
+<li><a href="/2022/11/23/%E4%B8%AD%E6%96%AD/#%E5%86%99%E5%85%A5%E8%AE%A1%E6%95%B0%E5%88%9D%E5%80%BC">写入计数初值</a></li>
+<li><a href="/2022/11/23/%E4%B8%AD%E6%96%AD/#%E5%BC%80%E5%90%AF%E5%AE%9A%E6%97%B6-x2F-%E8%AE%A1%E6%95%B0%E5%99%A8">开启定时&#x2F;计数器</a></li>
+<li><a href="/2022/11/23/%E4%B8%AD%E6%96%AD/#%E6%8C%87%E5%AE%9A%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0">指定中断处理函数</a>：当检测到中断请求后，立即执行中断处理函数</li>
+</ol>
+<h4 id="指定模式"><a href="#指定模式" class="headerlink" title="指定模式"></a>指定模式</h4><ul>
+<li>通过TMOD（Timer Model）寄存器指定模式</li>
+<li>TMOD寄存器是不可以位寻址的</li>
+<li>TMOD寄存器从第4位到第1位是用来设置定时&#x2F;计数器0的，分别是：<code>GATE</code>、C&#x2F;<span style="text-decoration: overline">T</span>、<code>M1</code>、<code>M0</code></li>
+<li>TMOD寄存器从第8位到第5位是用来设置定时&#x2F;计数器1的，分别是：<code>GATE</code>、C&#x2F;<span style="text-decoration: overline">T</span>、<code>M1</code>、<code>M0</code><ul>
+<li><code>GATE</code>：门控信号，用来指定定时&#x2F;计数器的开关的方式，1表示硬件开启，0表示软件开启</li>
+<li>C&#x2F;<span style="text-decoration: overline">T</span>：1表示工作在计数模式，0表示工作在定时模式</li>
+<li><code>M1</code>：用来设置工作方式的高位</li>
+<li><code>M0</code>：用来设置工作方式的低位</li>
+</ul>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>M1</th>
+<th>M0</th>
+<th>寄存器位数</th>
+<th>TH寄存器功能</th>
+<th>TL寄存器功能</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工作方式0</td>
+<td>0</td>
+<td>0</td>
+<td>13位</td>
+<td>-</td>
+<td>-</td>
+<td>为了向下兼容</td>
+</tr>
+<tr>
+<td>工作方式1</td>
+<td>0</td>
+<td>1</td>
+<td>16位</td>
+<td>存放计数初值的高位</td>
+<td>存放计数初值的低位</td>
+<td>只能手动载入初值</td>
+</tr>
+<tr>
+<td>工作方式2</td>
+<td>1</td>
+<td>0</td>
+<td>8位</td>
+<td>存放计数初值的备份</td>
+<td>存放计数初值</td>
+<td>可以自动载入初值</td>
+</tr>
+<tr>
+<td>工作方式3</td>
+<td>1</td>
+<td>1</td>
+<td>8位</td>
+<td>作为定时器</td>
+<td>作为计数器</td>
+<td>可以同时作为定时器和计数器的寄存器</td>
+</tr>
+</tbody></table>
+<h4 id="写入计数初值"><a href="#写入计数初值" class="headerlink" title="写入计数初值"></a>写入计数初值</h4><ul>
+<li>用2个初值寄存器存放初值，最大可以存放16位<ul>
+<li>定时&#x2F;计数器0：高8位用<code>TH0</code>寄存器，低8位用<code>TL0</code>寄存器</li>
+<li>定时&#x2F;计数器1：高8位用<code>TH1</code>寄存器，低8位用<code>TL1</code>寄存器</li>
+</ul>
+</li>
+</ul>
+<h4 id="开启定时-x2F-计数器"><a href="#开启定时-x2F-计数器" class="headerlink" title="开启定时&#x2F;计数器"></a>开启定时&#x2F;计数器</h4><ul>
+<li>通过TCON（Timer Config）寄存器的高4位指定定时&#x2F;计数器的开启</li>
+<li>TCON寄存器从第8位到第5位分别是：<code>TF1</code>、<code>TR1</code>、<code>TF0</code>、<code>TR0</code><ul>
+<li><code>TR0</code>：定时&#x2F;计数器0的软开（1）关（0）</li>
+<li><code>TR1</code>：定时&#x2F;计数器1的软开（1）关（0）</li>
+<li><code>TF0</code>：定时&#x2F;计数器的计数溢出标识，标识计数是（1）否（0）已完成</li>
+<li><code>TF1</code>：定时&#x2F;计数器的计数溢出标识，标识计数是（1）否（0）已完成</li>
+</ul>
+</li>
+</ul>
+<h4 id="完整代码示例-1"><a href="#完整代码示例-1" class="headerlink" title="完整代码示例"></a>完整代码示例</h4><ul>
+<li><p>通过按键，接收脉冲信号，累计5次开始中断</p>
+<ul>
+<li>在计数模式下，需要利用<code>T0</code>和<code>T1</code>引脚来接收脉冲信号，初始是高电平</li>
+<li>可以将<code>T0</code>和<code>T1</code>引脚接按键，实现发出脉冲信号</li>
+</ul>
+</li>
+<li><p>定时&#x2F;计数器完成计数后自动中断</p>
+</li>
+<li><p>进入中断后溢出标识会自动置0</p>
+</li>
+</ul>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;8052.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">init</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 指定开启定时计数器0中断</span></span><br><span class="line">    IE = <span class="number">0x82</span>;</span><br><span class="line">    <span class="comment">// 为定时/计数器0指定模式</span></span><br><span class="line">    <span class="comment">// 指定门控信号为软件开启</span></span><br><span class="line">    <span class="comment">// 指定工作在计数模式</span></span><br><span class="line">    <span class="comment">// 指定工作方式1</span></span><br><span class="line">    TMOD = <span class="number">0x05</span>;</span><br><span class="line">    <span class="comment">// 为定时/计数器0指定计数初值</span></span><br><span class="line">    TH0 = (<span class="number">65536</span> - <span class="number">5</span>) / <span class="number">256</span>;</span><br><span class="line">    TL0 = (<span class="number">65536</span> - <span class="number">5</span>) % <span class="number">256</span>;</span><br><span class="line">    <span class="comment">// 为定时/计数器0开启计数</span></span><br><span class="line">    TR0 = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">timer0</span><span class="params">(<span class="type">void</span>)</span> __interrupt 1</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 阻止计数</span></span><br><span class="line">    TR0 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 业务代码</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重新指定计数初值</span></span><br><span class="line">    TH0 = (<span class="number">65536</span> - <span class="number">5</span>) / <span class="number">256</span>;</span><br><span class="line">    TL0 = (<span class="number">65536</span> - <span class="number">5</span>) % <span class="number">256</span>;</span><br><span class="line">    <span class="comment">// 恢复计数</span></span><br><span class="line">    TR0 = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h3 id="STC12C5A60S2使用定时器中断"><a href="#STC12C5A60S2使用定时器中断" class="headerlink" title="STC12C5A60S2使用定时器中断"></a>STC12C5A60S2使用定时器中断</h3><ol>
+<li><a href="/2022/11/23/%E4%B8%AD%E6%96%AD/#%E5%BC%80%E4%B8%AD%E6%96%AD">开中断</a></li>
+<li><a href="/2022/11/23/%E4%B8%AD%E6%96%AD/#%E6%8C%87%E5%AE%9A%E6%A8%A1%E5%BC%8F">指定模式</a></li>
+<li><a href="/2022/11/23/%E4%B8%AD%E6%96%AD/#%E5%86%99%E5%85%A5%E8%AE%A1%E6%95%B0%E5%88%9D%E5%80%BC">写入计数初值</a></li>
+<li><a href="/2022/11/23/%E4%B8%AD%E6%96%AD/#%E5%BC%80%E5%90%AF%E5%AE%9A%E6%97%B6-x2F-%E8%AE%A1%E6%95%B0%E5%99%A8">开启定时&#x2F;计数器</a></li>
+<li><a href="/2022/11/23/%E4%B8%AD%E6%96%AD/#%E6%8C%87%E5%AE%9A%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0">指定中断处理函数</a>：当检测到中断请求后，立即执行中断处理函数</li>
+</ol>
+<h4 id="完整代码示例-2"><a href="#完整代码示例-2" class="headerlink" title="完整代码示例"></a>完整代码示例</h4><h5 id="小于等于65536μs的定时"><a href="#小于等于65536μs的定时" class="headerlink" title="小于等于65536μs的定时"></a>小于等于65536μs的定时</h5><ul>
+<li><p>在定时时实际上是通过晶振的振动频率来数数，以达到定时的效果，12MHz的晶振机器周期为<code>1μs</code></p>
+</li>
+<li><p>由于在标准51单片机上有2个16位的定时&#x2F;计数器，没个定时&#x2F;计数器最大只能存储65536个数，所以每次计时只能累计<code>65536μs</code></p>
+</li>
+<li><p>设置一个50ms的定时器</p>
+</li>
+</ul>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;8052.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">init</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 指定开启定时计数器0中断</span></span><br><span class="line">    IE = <span class="number">0x82</span>;</span><br><span class="line">    <span class="comment">// 为定时/计数器0指定模式</span></span><br><span class="line">    <span class="comment">// 指定门控信号为软件开启</span></span><br><span class="line">    <span class="comment">// 指定工作在定时模式</span></span><br><span class="line">    <span class="comment">// 指定工作方式1</span></span><br><span class="line">    TMOD = <span class="number">0x01</span>;</span><br><span class="line">    <span class="comment">// 为定时/计数器0指定时间初值（1ms=1000次）</span></span><br><span class="line">    TH0 = (<span class="number">65536</span> - <span class="number">50000</span>) / <span class="number">256</span>;</span><br><span class="line">    TL0 = (<span class="number">65536</span> - <span class="number">50000</span>) % <span class="number">256</span>;</span><br><span class="line">    <span class="comment">// 为定时/计数器0开启计数</span></span><br><span class="line">    TR0 = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">timer0</span><span class="params">(<span class="type">void</span>)</span> __interrupt 1</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 阻止计数</span></span><br><span class="line">    TR0 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 业务代码</span></span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重新指定计数初值</span></span><br><span class="line">    TH0 = (<span class="number">65536</span> - <span class="number">50000</span>) / <span class="number">256</span>;</span><br><span class="line">    TL0 = (<span class="number">65536</span> - <span class="number">50000</span>) % <span class="number">256</span>;</span><br><span class="line">    <span class="comment">// 恢复计数</span></span><br><span class="line">    TR0 = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h5 id="大于65536μs的定时"><a href="#大于65536μs的定时" class="headerlink" title="大于65536μs的定时"></a>大于65536μs的定时</h5><ul>
+<li><p>虽然每次计时最多只能累计<code>65536μs</code>，但是通过多次计时能实现更多时间的累计，其中每次计时的时间为时间基值</p>
+</li>
+<li><p>设置一个1s的定时器</p>
+<ul>
+<li>通过在时间基值为50ms的定时器，累计定时20次，实现1s的定时器</li>
+</ul>
+</li>
+</ul>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;8052.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">init</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 指定开启定时计数器0中断</span></span><br><span class="line">    IE = <span class="number">0x82</span>;</span><br><span class="line">    <span class="comment">// 为定时/计数器0指定模式</span></span><br><span class="line">    <span class="comment">// 指定门控信号为软件开启</span></span><br><span class="line">    <span class="comment">// 指定工作在定时模式</span></span><br><span class="line">    <span class="comment">// 指定工作方式1</span></span><br><span class="line">    TMOD = <span class="number">0x01</span>;</span><br><span class="line">    <span class="comment">// 为定时/计数器0指定时间初值（1ms=1000次）</span></span><br><span class="line">    TH0 = (<span class="number">65536</span> - <span class="number">50000</span>) / <span class="number">256</span>;</span><br><span class="line">    TL0 = (<span class="number">65536</span> - <span class="number">50000</span>) % <span class="number">256</span>;</span><br><span class="line">    <span class="comment">// 为定时/计数器0开启计数</span></span><br><span class="line">    TR0 = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">timer0</span><span class="params">(<span class="type">void</span>)</span> __interrupt 1</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 累加器</span></span><br><span class="line">    <span class="type">static</span> <span class="type">unsigned</span> <span class="type">char</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 阻止计数</span></span><br><span class="line">    TR0 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (++i == <span class="number">20</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 业务代码</span></span><br><span class="line">        ...</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 累加器置0</span></span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重新指定计数初值</span></span><br><span class="line">    TH0 = (<span class="number">65536</span> - <span class="number">50000</span>) / <span class="number">256</span>;</span><br><span class="line">    TL0 = (<span class="number">65536</span> - <span class="number">50000</span>) % <span class="number">256</span>;</span><br><span class="line">    <span class="comment">// 恢复计数</span></span><br><span class="line">    TR0 = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h6 id="只改变标识"><a href="#只改变标识" class="headerlink" title="只改变标识"></a>只改变标识</h6><ul>
+<li>如果一个定时器需要反复使用，在定时器完成定时后，不立即执行业务代码，而是改为只改变预先设定的标识，这样能减小定时器的误差</li>
+<li>通过<code>bit</code>关键字可以定义一个布尔值，只能存放1或0，<code>bit</code>不能用<code>unsigned</code>关键字修饰</li>
+</ul>
+<div class="highlight-container" data-rel="C"><figure class="iseeu highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;8052.h&gt;</span></span></span><br><span class="line"></span><br><span class="line">bit flag = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">init</span><span class="params">()</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 指定开启定时计数器0中断</span></span><br><span class="line">    IE = <span class="number">0x82</span>;</span><br><span class="line">    <span class="comment">// 为定时/计数器0指定模式</span></span><br><span class="line">    <span class="comment">// 指定门控信号为软件开启</span></span><br><span class="line">    <span class="comment">// 指定工作在定时模式</span></span><br><span class="line">    <span class="comment">// 指定工作方式1</span></span><br><span class="line">    TMOD = <span class="number">0x01</span>;</span><br><span class="line">    <span class="comment">// 为定时/计数器0指定时间初值（1ms=1000次）</span></span><br><span class="line">    TH0 = (<span class="number">65536</span> - <span class="number">50000</span>) / <span class="number">256</span>;</span><br><span class="line">    TL0 = (<span class="number">65536</span> - <span class="number">50000</span>) % <span class="number">256</span>;</span><br><span class="line">    <span class="comment">// 为定时/计数器0开启计数</span></span><br><span class="line">    TR0 = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">main</span><span class="params">(<span class="type">void</span>)</span></span><br><span class="line">&#123;</span><br><span class="line">    init();</span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 当标识位为1时，表示定时器完成定时</span></span><br><span class="line">        <span class="keyword">if</span> (flag)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// 业务代码</span></span><br><span class="line">            ...</span><br><span class="line">            <span class="comment">// 标识位置0</span></span><br><span class="line">            flag = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="type">void</span> <span class="title function_">timer0</span><span class="params">(<span class="type">void</span>)</span> __interrupt 1</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// 累加器</span></span><br><span class="line">    <span class="type">static</span> <span class="type">unsigned</span> <span class="type">char</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 阻止计数</span></span><br><span class="line">    TR0 = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> (++i == <span class="number">20</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 标识位置1 </span></span><br><span class="line">        flag = <span class="number">1</span>;</span><br><span class="line">        <span class="comment">// 累加器置0</span></span><br><span class="line">        i = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 重新指定计数初值</span></span><br><span class="line">    TH0 = (<span class="number">65536</span> - <span class="number">50000</span>) / <span class="number">256</span>;</span><br><span class="line">    TL0 = (<span class="number">65536</span> - <span class="number">50000</span>) % <span class="number">256</span>;</span><br><span class="line">    <span class="comment">// 恢复计数</span></span><br><span class="line">    TR0 = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><h3 id="中断函数的中断向量号总结"><a href="#中断函数的中断向量号总结" class="headerlink" title="中断函数的中断向量号总结"></a>中断函数的中断向量号总结</h3><table>
+<thead>
+<tr>
+<th>中断向量号</th>
+<th>中断类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>0</td>
+<td>外部中断0</td>
+</tr>
+<tr>
+<td>1</td>
+<td>定时&#x2F;计数器中断0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>外部中断1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>定时&#x2F;计数器中断1</td>
+</tr>
+<tr>
+<td>4</td>
+<td>串行终端</td>
+</tr>
+</tbody></table>
+<h3 id="寄存器总结"><a href="#寄存器总结" class="headerlink" title="寄存器总结"></a>寄存器总结</h3><table>
+<thead>
+<tr>
+<th>寄存器名</th>
+<th>用来定义的功能</th>
+<th>第8位</th>
+<th>第7位</th>
+<th>第6位</th>
+<th>第5位</th>
+<th>第4位</th>
+<th>第3位</th>
+<th>第2位</th>
+<th>第1位</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>IE</code></td>
+<td>寄存器的总开关</td>
+<td><code>EA</code></td>
+<td>-</td>
+<td>-</td>
+<td><code>ES</code></td>
+<td><code>ET1</code></td>
+<td><code>EX1</code></td>
+<td><code>ET0</code></td>
+<td><code>EX0</code></td>
+</tr>
+<tr>
+<td><code>TCON</code></td>
+<td>外部中断的使能信号、请求类型</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><code>IE1</code></td>
+<td><code>IT1</code></td>
+<td><code>IE0</code></td>
+<td><code>IT0</code></td>
+</tr>
+<tr>
+<td><code>TCON</code></td>
+<td>定时计数器的溢出标识、软开关</td>
+<td><code>TF1</code></td>
+<td><code>TR1</code></td>
+<td><code>TF0</code></td>
+<td><code>TR0</code></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>TMOD</code></td>
+<td>定时计数器0的开关方式、定时&#x2F;计数模式、工作方式</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td><code>GATE</code></td>
+<td>C&#x2F;<span style="text-decoration: overline">T</span></td>
+<td><code>M1</code></td>
+<td><code>M0</code></td>
+</tr>
+<tr>
+<td><code>TMOD</code></td>
+<td>定时计数器1的开关方式、定时&#x2F;计数模式、工作方式</td>
+<td><code>GATE</code></td>
+<td>C&#x2F;<span style="text-decoration: overline">T</span></td>
+<td><code>M1</code></td>
+<td><code>M0</code></td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>TH1</code></td>
+<td>定时计数器1的计数初值高8位</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>TL1</code></td>
+<td>定时计数器1的计数初值低8位</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>TH0</code></td>
+<td>定时计数器0的计数初值高8位</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td><code>TL0</code></td>
+<td>定时计数器0的计数初值低8位</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody></table>
+<p><code>EA</code>：中断总开（1）关（0）<br><code>ES</code>：串行中断的开（1）关（0）<br><code>ET1</code>：定时&#x2F;计数器1的开（1）关（0）<br><code>EX1</code>：外部中断1的开（1）关（0）<br><code>ET0</code>：定时&#x2F;计数器0的开（1）关（0）<br><code>EX0</code>：外部中断0的开（1）关（0）<br><code>IE1</code>：外部中断1的使能信号。当外部中断1接收到中断信号后，CPU会自动将<code>IE1</code>设置为1；当外部中断0的中断信号处理结束后，CPU会自动将<code>IE1</code>设置为0<br><code>IT1</code>：设置外部中断1的请求类型为低电平请求（0）或下降沿请求（1）<br><code>IE0</code>：外部中断0的使能信号。当外部中断0接收到中断信号后，CPU会自动将<code>IE0</code>设置为1；当外部中断0的中断信号处理结束后，CPU会自动将<code>IE0</code>设置为0<br><code>IT0</code>：设置外部中断0的请求类型为低电平请求（0）或下降沿请求（1）<br><code>TF1</code>：定时&#x2F;计数器的计数溢出标识，标识计数是（1）否（0）已完成<br><code>TR1</code>：定时&#x2F;计数器1的软开（1）关（0）<br><code>TF0</code>：定时&#x2F;计数器的计数溢出标识，标识计数是（1）否（0）已完成<br><code>TR0</code>：定时&#x2F;计数器0的软开（1）关（0）<br><code>GATE</code>：门控信号，用来指定定时&#x2F;计数器的开关的方式，1表示硬件开启，0表示软件开启<br>C&#x2F;<span style="text-decoration: overline">T</span>：1表示工作在计数模式，0表示工作在定时模式<br><code>M1</code>：用来设置工作方式的高位<br><code>M0</code>：用来设置工作方式的低位</p>
+<h3 id="定时计数器工作方式总结"><a href="#定时计数器工作方式总结" class="headerlink" title="定时计数器工作方式总结"></a>定时计数器工作方式总结</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>M1</th>
+<th>M0</th>
+<th>寄存器位数</th>
+<th>TH寄存器功能</th>
+<th>TL寄存器功能</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>工作方式0</td>
+<td>0</td>
+<td>0</td>
+<td>13位</td>
+<td>-</td>
+<td>-</td>
+<td>为了向下兼容</td>
+</tr>
+<tr>
+<td>工作方式1</td>
+<td>0</td>
+<td>1</td>
+<td>16位</td>
+<td>存放计数初值的高位</td>
+<td>存放计数初值的低位</td>
+<td>只能手动载入初值</td>
+</tr>
+<tr>
+<td>工作方式2</td>
+<td>1</td>
+<td>0</td>
+<td>8位</td>
+<td>存放计数初值的备份</td>
+<td>存放计数初值</td>
+<td>可以自动载入初值</td>
+</tr>
+<tr>
+<td>工作方式3</td>
+<td>1</td>
+<td>1</td>
+<td>8位</td>
+<td>作为定时器</td>
+<td>作为计数器</td>
+<td>可以同时作为定时器和计数器的寄存器</td>
+</tr>
+</tbody></table>
+<h2 id="完成"><a href="#完成" class="headerlink" title="完成"></a>完成</h2>
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box text-lg mt-1.5 flex-wrap justify-center flex md:hidden">
+                
+                    <li class="tag-item mx-0.5">
+                        <a href="/tags/Microcontroller/">#Microcontroller</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+
+        
+            <div class="article-nav my-8 flex justify-between items-center px-2 sm:px-6 md:px-8">
+                
+                    <div class="article-prev border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="prev"
+                        rel="prev"
+                        href="/2022/11/23/STC12C5A60S2%E5%BC%95%E8%84%9A%E5%AE%9A%E4%B9%89/"
+                        >
+                            <span class="left arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">【笔记】STC12C5A60S2引脚定义</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next border-border-color shadow-redefine-flat shadow-shadow-color-2 rounded-medium px-4 py-2 hover:shadow-redefine-flat-hover hover:shadow-shadow-color-2">
+                        <a class="next"
+                        rel="next"
+                        href="/2022/11/22/%E9%92%89%E9%92%89%E5%9B%9E%E6%94%BE%E4%B8%8B%E8%BD%BD/"
+                        >
+                            <span class="title flex justify-center items-center">
+                                <span class="post-nav-title-item">【笔记】钉钉回放下载</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex justify-center items-center">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+
+        
+            <div class="comment-container px-2 sm:px-6 md:px-8 pb-8">
+                <div class="comments-container mt-10 w-full ">
+    <div id="comment-anchor" class="w-full h-2.5"></div>
+    <div class="comment-area-title w-full my-1.5 md:my-2.5 text-xl md:text-3xl font-bold">
+        评论
+    </div>
+    
+
+        
+            
+    <div class="twikoo-container">
+        <script data-swup-reload-script
+                src='https://cdn.staticfile.org/twikoo/1.6.10/twikoo.all.min.js'
+        ></script>
+        <div id="twikoo-comment"></div>
+        <script data-swup-reload-script>
+            function loadTwikoo() {
+                twikoo.init({
+                    el: '#twikoo-comment',
+                    envId: 'https://twikoo.loli.fj.cn',
+                });
+            }
+
+            if ('true') {
+                const loadTwikooTimeout = setTimeout(() => {
+                    loadTwikoo();
+                    clearTimeout(loadTwikooTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadTwikoo);
+            }
+        </script>
+    </div>
+
+
+        
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+
+    
+        <div class="toc-content-container">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <div class="toc-title">此页目录</div>
+        <div class="page-title">【笔记】中断</div>
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD"><span class="nav-number">3.</span> <span class="nav-text">外部中断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E5%AD%97%E4%BF%A1%E5%8F%B7%E7%9A%84%E7%A7%8D%E7%B1%BB%EF%BC%884%E7%A7%8D-x2F-2%E7%B1%BB%EF%BC%89"><span class="nav-number">3.1.</span> <span class="nav-text">数字信号的种类（4种&#x2F;2类）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD%E8%AF%B7%E6%B1%82%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.2.</span> <span class="nav-text">外部中断请求类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STC12C5A60S2%E4%BD%BF%E7%94%A8%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD"><span class="nav-number">3.3.</span> <span class="nav-text">STC12C5A60S2使用外部中断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E4%B8%AD%E6%96%AD"><span class="nav-number">3.3.1.</span> <span class="nav-text">开中断</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E6%89%80%E6%9C%89%E4%B8%AD%E6%96%AD"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">关闭所有中断</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%AD%97%E8%8A%82%E5%AF%BB%E5%9D%80"><span class="nav-number">3.3.1.1.1.</span> <span class="nav-text">通过字节寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E4%BD%8D%E5%AF%BB%E5%9D%80"><span class="nav-number">3.3.1.1.2.</span> <span class="nav-text">通过位寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD0"><span class="nav-number">3.3.1.2.</span> <span class="nav-text">开启外部中断0</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%AD%97%E8%8A%82%E5%AF%BB%E5%9D%80-1"><span class="nav-number">3.3.1.2.1.</span> <span class="nav-text">通过字节寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E4%BD%8D%E5%AF%BB%E5%9D%80-1"><span class="nav-number">3.3.1.2.2.</span> <span class="nav-text">通过位寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD1"><span class="nav-number">3.3.1.3.</span> <span class="nav-text">开启外部中断1</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%AD%97%E8%8A%82%E5%AF%BB%E5%9D%80-2"><span class="nav-number">3.3.1.3.1.</span> <span class="nav-text">通过字节寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E4%BD%8D%E5%AF%BB%E5%9D%80-2"><span class="nav-number">3.3.1.3.2.</span> <span class="nav-text">通过位寻址</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%90%8C%E6%97%B6%E5%BC%80%E5%90%AF%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD0%E5%92%8C%E5%A4%96%E9%83%A8%E4%B8%AD%E6%96%AD1"><span class="nav-number">3.3.1.4.</span> <span class="nav-text">同时开启外部中断0和外部中断1</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%AD%97%E8%8A%82%E5%AF%BB%E5%9D%80-3"><span class="nav-number">3.3.1.4.1.</span> <span class="nav-text">通过字节寻址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E4%BD%8D%E5%AF%BB%E5%9D%80-3"><span class="nav-number">3.3.1.4.2.</span> <span class="nav-text">通过位寻址</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E4%B8%AD%E6%96%AD%E8%AF%B7%E6%B1%82%E7%B1%BB%E5%9E%8B"><span class="nav-number">3.3.2.</span> <span class="nav-text">指定中断请求类型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E8%AF%B7%E6%B1%82%E7%B1%BB%E5%9E%8B%E8%AE%BE%E7%BD%AE%E4%B8%BA%E4%BD%8E%E7%94%B5%E5%B9%B3%E8%AF%B7%E6%B1%82%EF%BC%88%E4%B8%80%E4%B8%AA%E6%97%B6%E5%88%BB%EF%BC%89"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">中断请求类型设置为低电平请求（一个时刻）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E8%AF%B7%E6%B1%82%E7%B1%BB%E5%9E%8B%E8%AE%BE%E7%BD%AE%E4%B8%BA%E4%B8%8B%E9%99%8D%E6%B2%BF%E8%AF%B7%E6%B1%82%EF%BC%88%E4%B8%80%E4%B8%AA%E7%9E%AC%E9%97%B4%EF%BC%89"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">中断请求类型设置为下降沿请求（一个瞬间）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E5%87%BD%E6%95%B0"><span class="nav-number">3.3.3.</span> <span class="nav-text">指定中断处理函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%98%BB%E6%AD%A2%E4%B8%AD%E6%96%AD%E7%9A%84%E6%8E%A5%E6%94%B6"><span class="nav-number">3.3.3.1.</span> <span class="nav-text">阻止中断的接收</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B"><span class="nav-number">3.3.4.</span> <span class="nav-text">完整代码示例</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6-x2F-%E8%AE%A1%E6%95%B0%E5%99%A8%E4%B8%AD%E6%96%AD"><span class="nav-number">4.</span> <span class="nav-text">定时&#x2F;计数器中断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6-x2F-%E8%AE%A1%E6%95%B0%E5%99%A8%E7%9A%84%E8%AE%A1%E6%95%B0%E6%96%B9%E5%BC%8F"><span class="nav-number">4.1.</span> <span class="nav-text">定时&#x2F;计数器的计数方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6-x2F-%E8%AE%A1%E6%95%B0%E5%99%A8%E7%9A%84%E8%AE%A1%E6%95%B0%E5%86%85%E5%AE%B9"><span class="nav-number">4.2.</span> <span class="nav-text">定时&#x2F;计数器的计数内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6-x2F-%E8%AE%A1%E6%95%B0%E5%99%A8%E7%9A%84%E6%97%B6%E9%97%B4%E8%AE%A1%E7%AE%97"><span class="nav-number">4.3.</span> <span class="nav-text">定时&#x2F;计数器的时间计算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STC12C5A60S2%E4%BD%BF%E7%94%A8%E8%AE%A1%E6%95%B0%E5%99%A8%E4%B8%AD%E6%96%AD"><span class="nav-number">4.4.</span> <span class="nav-text">STC12C5A60S2使用计数器中断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%87%E5%AE%9A%E6%A8%A1%E5%BC%8F"><span class="nav-number">4.4.1.</span> <span class="nav-text">指定模式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%86%99%E5%85%A5%E8%AE%A1%E6%95%B0%E5%88%9D%E5%80%BC"><span class="nav-number">4.4.2.</span> <span class="nav-text">写入计数初值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%80%E5%90%AF%E5%AE%9A%E6%97%B6-x2F-%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="nav-number">4.4.3.</span> <span class="nav-text">开启定时&#x2F;计数器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-1"><span class="nav-number">4.4.4.</span> <span class="nav-text">完整代码示例</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#STC12C5A60S2%E4%BD%BF%E7%94%A8%E5%AE%9A%E6%97%B6%E5%99%A8%E4%B8%AD%E6%96%AD"><span class="nav-number">4.5.</span> <span class="nav-text">STC12C5A60S2使用定时器中断</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%8C%E6%95%B4%E4%BB%A3%E7%A0%81%E7%A4%BA%E4%BE%8B-2"><span class="nav-number">4.5.1.</span> <span class="nav-text">完整代码示例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B0%8F%E4%BA%8E%E7%AD%89%E4%BA%8E65536%CE%BCs%E7%9A%84%E5%AE%9A%E6%97%B6"><span class="nav-number">4.5.1.1.</span> <span class="nav-text">小于等于65536μs的定时</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%A7%E4%BA%8E65536%CE%BCs%E7%9A%84%E5%AE%9A%E6%97%B6"><span class="nav-number">4.5.1.2.</span> <span class="nav-text">大于65536μs的定时</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%8F%AA%E6%94%B9%E5%8F%98%E6%A0%87%E8%AF%86"><span class="nav-number">4.5.1.2.1.</span> <span class="nav-text">只改变标识</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%AD%E6%96%AD%E5%87%BD%E6%95%B0%E7%9A%84%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E5%8F%B7%E6%80%BB%E7%BB%93"><span class="nav-number">5.1.</span> <span class="nav-text">中断函数的中断向量号总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%84%E5%AD%98%E5%99%A8%E6%80%BB%E7%BB%93"><span class="nav-number">5.2.</span> <span class="nav-text">寄存器总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E6%97%B6%E8%AE%A1%E6%95%B0%E5%99%A8%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93"><span class="nav-number">5.3.</span> <span class="nav-text">定时计数器工作方式总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%8C%E6%88%90"><span class="nav-number">6.</span> <span class="nav-text">完成</span></a></li></ol>
+
+    </div>
+</div>
+        </div>
+    
+</div>
+
+
+
+                
+
+            </div>
+
+            
+
+        </div>
+
+        <div class="main-content-footer">
+            <footer class="footer mt-5 py-5 h-auto text-base text-third-text-color relative border-t-2 border-t-border-color">
+    <div class="info-container py-3 text-center">
+        
+        <div class="text-center">
+            &copy;
+            
+              <span>2019</span>
+              -
+            
+            2024&nbsp;&nbsp;<i class="fa-solid fa-heart fa-beat" style="--fa-animation-duration: 0.5s; color: #f54545"></i>&nbsp;&nbsp;<a href="/">绯鞠</a>
+            
+                
+                <p class="post-count space-x-0.5">
+                    <span>
+                        共 2844 篇文章
+                    </span>
+                    
+                </p>
+            
+        </div>
+        
+            <script data-swup-reload-script src="https://cn.vercount.one/js"></script>
+            <div class="relative text-center lg:absolute lg:right-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-right">
+                
+                    <span id="busuanzi_container_site_uv" class="lg:!block">
+                        <span class="text-sm">访问人数</span>
+                        <span id="busuanzi_value_site_uv"></span>
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv" class="lg:!block">
+                        <span class="text-sm">总访问量</span>
+                        <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="relative text-center lg:absolute lg:left-[20px] lg:top-1/2 lg:-translate-y-1/2 lg:text-left">
+            <span class="lg:block text-sm">由 <?xml version="1.0" encoding="utf-8"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg class="relative top-[2px] inline-block align-baseline" version="1.1" id="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="1rem" height="1rem" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><path fill="#0E83CD" d="M256.4,25.8l-200,115.5L56,371.5l199.6,114.7l200-115.5l0.4-230.2L256.4,25.8z M349,354.6l-18.4,10.7l-18.6-11V275H200v79.6l-18.4,10.7l-18.6-11v-197l18.5-10.6l18.5,10.8V237h112v-79.6l18.5-10.6l18.5,10.8V354.6z"/></svg><a target="_blank" class="text-base" href="https://hexo.io">Hexo</a> 驱动</span>
+            <span class="text-sm lg:block">主题&nbsp;<a class="text-base" target="_blank" href="https://github.com/EvanNotFound/hexo-theme-redefine">Redefine v2.6.4</a></span>
+        </div>
+        
+            <div class="icp-info my-1"><a target="_blank" rel="nofollow" href="
+                
+                https://beian.miit.gov.cn
+                
+                ">蒙ICP备2022003684号</a></div>
+        
+        
+            <div>
+                博客已运行 <span class="odometer" id="runtime_days" ></span> 天 <span class="odometer" id="runtime_hours"></span> 小时 <span class="odometer" id="runtime_minutes"></span> 分钟 <span class="odometer" id="runtime_seconds"></span> 秒
+            </div>
+        
+        
+            <script data-swup-reload-script>
+                try {
+                    function odometer_init() {
+                    const elements = document.querySelectorAll('.odometer');
+                    elements.forEach(el => {
+                        new Odometer({
+                            el,
+                            format: '( ddd).dd',
+                            duration: 200
+                        });
+                    });
+                    }
+                    odometer_init();
+                } catch (error) {}
+            </script>
+        
+        
+        
+    </div>  
+</footer>
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="article-tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="right-bottom-tools page-aside-toggle">
+                <i class="fa-regular fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fa-regular fa-comments"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-side-tools-container">
+        <div class="side-tools-container">
+    <ul class="hidden-tools-list">
+        <li class="right-bottom-tools tool-font-adjust-plus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-plus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-font-adjust-minus flex justify-center items-center">
+            <i class="fa-regular fa-magnifying-glass-minus"></i>
+        </li>
+
+        <li class="right-bottom-tools tool-dark-light-toggle flex justify-center items-center">
+            <i class="fa-regular fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="right-bottom-tools rss flex justify-center items-center">
+                <a class="flex justify-center items-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                <i class="fa-regular fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+
+        <li class="right-bottom-tools tool-scroll-to-bottom flex justify-center items-center">
+            <i class="fa-regular fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="visible-tools-list">
+        <li class="right-bottom-tools toggle-tools-list flex justify-center items-center">
+            <i class="fa-regular fa-cog fa-spin"></i>
+        </li>
+        
+            <li class="right-bottom-tools tool-scroll-to-top flex justify-center items-center">
+                <i class="arrow-up fas fa-arrow-up"></i>
+                <span class="percent"></span>
+            </li>
+        
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fa-solid fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fa-solid fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fa-solid fa-spinner fa-spin-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+    
+<script src="/js/libs/Swup.min.js"></script>
+
+<script src="/js/libs/SwupSlideTheme.min.js"></script>
+
+<script src="/js/libs/SwupScriptsPlugin.min.js"></script>
+
+<script src="/js/libs/SwupProgressPlugin.min.js"></script>
+
+<script src="/js/libs/SwupScrollPlugin.min.js"></script>
+
+<script src="/js/libs/SwupPreloadPlugin.min.js"></script>
+
+<script>
+    const swup = new Swup({
+        plugins: [
+            new SwupScriptsPlugin({
+                optin: true,
+            }),
+            new SwupProgressPlugin(),
+            new SwupScrollPlugin({
+                offset: 80,
+            }),
+            new SwupSlideTheme({
+                mainElement: ".main-content-body",
+            }),
+            new SwupPreloadPlugin(),
+        ],
+        containers: ["#swup"],
+    });
+</script>
+
+
+
+
+
+
+
+<script src="/js/tools/imageViewer.js" type="module"></script>
+
+<script src="/js/utils.js" type="module"></script>
+
+<script src="/js/main.js" type="module"></script>
+
+<script src="/js/layouts/navbarShrink.js" type="module"></script>
+
+<script src="/js/tools/scrollTopBottom.js" type="module"></script>
+
+<script src="/js/tools/lightDarkSwitch.js" type="module"></script>
+
+<script src="/js/layouts/categoryList.js" type="module"></script>
+
+
+
+    
+<script src="/js/tools/localSearch.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/tools/codeBlock.js" type="module"></script>
+
+
+
+
+
+
+    
+<script src="/js/tools/runtime.js"></script>
+
+    
+<script src="/js/libs/odometer.min.js"></script>
+
+    
+<link rel="stylesheet" href="/assets/odometer-theme-minimal.css">
+
+
+
+
+  
+<script src="/js/libs/Typed.min.js"></script>
+
+  
+<script src="/js/plugins/typed.js" type="module"></script>
+
+
+
+
+    
+<script src="/js/libs/mermaid.min.js"></script>
+
+    
+<script src="/js/plugins/mermaid.js"></script>
+
+
+
+
+
+
+
+<div class="post-scripts" data-swup-reload-script>
+    
+        
+<script src="/js/tools/tocToggle.js" type="module"></script>
+
+<script src="/js/layouts/toc.js" type="module"></script>
+
+<script src="/js/plugins/tabs.js" type="module"></script>
+
+    
+</div>
+
+
+</body>
+</html>
